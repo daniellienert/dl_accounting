@@ -1,0 +1,14 @@
+plugin.tx_dlaccounting {
+	view {
+		# cat=plugin.tx_dlaccounting/file; type=string; label=Path to template root (FE)
+		templateRootPath = EXT:dl_accounting/Resources/Private/Templates/
+		# cat=plugin.tx_dlaccounting/file; type=string; label=Path to template partials (FE)
+		partialRootPath = EXT:dl_accounting/Resources/Private/Partials/
+		# cat=plugin.tx_dlaccounting/file; type=string; label=Path to template layouts (FE)
+		layoutRootPath = EXT:dl_accounting/Resources/Private/Layouts/
+	}
+	persistence {
+		# cat=plugin.tx_dlaccounting//a; type=int+; label=Default storage PID
+		storagePid = 
+	}
+}

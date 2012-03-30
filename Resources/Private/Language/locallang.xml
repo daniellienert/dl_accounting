@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>module</type>
+		<description>Language labels for the Accounting module extension in the FRONTEND</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="tx_dlaccounting_domain_model_bill">Bill</label>
+			<label index="tx_dlaccounting_domain_model_bill.user">user</label>
+			<label index="tx_dlaccounting_domain_model_bankaccount">Bank Account</label>
+			<label index="tx_dlaccounting_domain_model_bankaccount.first_name">firstName</label>
+			<label index="tx_dlaccounting_domain_model_bankaccount.last_name">lastName</label>
+			<label index="tx_dlaccounting_domain_model_bankaccount.city">city</label>
+			<label index="tx_dlaccounting_domain_model_bankaccount.account_no">accountNo</label>
+			<label index="tx_dlaccounting_domain_model_bankaccount.bank_code">bankCode</label>
+			<label index="tx_dlaccounting_domain_model_bankaccount.user">user</label>
+			<label index="tx_dlaccounting_domain_model_billposition">BillPosition</label>
+			<label index="tx_dlaccounting_domain_model_billposition.date">date</label>
+			<label index="tx_dlaccounting_domain_model_billposition.amount">amount</label>
+			<label index="tx_dlaccounting_domain_model_billposition.description">description</label>
+			<label index="tx_dlaccounting_domain_model_billposition.bill">bill</label>
+			<label index="tx_dlaccounting_domain_model_billposition.account_code">accountCode</label>
+			<label index="tx_dlaccounting_domain_model_billposition.cost_type">costType</label>
+			<label index="tx_dlaccounting_domain_model_accountcode">AccountCode</label>
+			<label index="tx_dlaccounting_domain_model_accountcode.title">title</label>
+			<label index="tx_dlaccounting_domain_model_accountcode.code">code</label>
+			<label index="tx_dlaccounting_domain_model_department">Department</label>
+			<label index="tx_dlaccounting_domain_model_department.title">title</label>
+			<label index="tx_dlaccounting_domain_model_costtype">CostType</label>
+			<label index="tx_dlaccounting_domain_model_costtype.title">title</label>
+			<label index="tx_dlaccounting_domain_model_costtype.cost_type">costType</label>
+			<label index="tx_dlaccounting_domain_model_costtype.job_number">jobNumber</label>
+			<label index="tx_dlaccounting_domain_model_costtype.department">department</label>
+		</languageKey>
+	</data>
+</T3locallang>

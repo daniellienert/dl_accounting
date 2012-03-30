@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>database</type>
+		<description>Language labels for database tables/fields belonging to extension 'dl_accounting'</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="tx_dlaccounting_domain_model_bill">Bill</label>
+			<label index="tx_dlaccounting_domain_model_bill.user">User</label>
+
+			<label index="tx_dlaccounting_domain_model_bankaccount">Bank Account</label>
+			<label index="tx_dlaccounting_domain_model_bankaccount.first_name">First Name</label>
+			<label index="tx_dlaccounting_domain_model_bankaccount.last_name">Last Name</label>
+			<label index="tx_dlaccounting_domain_model_bankaccount.city">City</label>
+			<label index="tx_dlaccounting_domain_model_bankaccount.account_no">Account No</label>
+			<label index="tx_dlaccounting_domain_model_bankaccount.bank_code">Bank Code</label>
+			<label index="tx_dlaccounting_domain_model_bankaccount.user">User</label>
+
+			<label index="tx_dlaccounting_domain_model_billposition">Bill Position</label>
+			<label index="tx_dlaccounting_domain_model_billposition.date">Date</label>
+			<label index="tx_dlaccounting_domain_model_billposition.amount">Amount</label>
+			<label index="tx_dlaccounting_domain_model_billposition.description">Description</label>
+			<label index="tx_dlaccounting_domain_model_billposition.bill">Bill</label>
+			<label index="tx_dlaccounting_domain_model_billposition.account_code">Account Code</label>
+			<label index="tx_dlaccounting_domain_model_billposition.cost_type">Cost Type</label>
+
+			<label index="tx_dlaccounting_domain_model_accountcode">Account Code</label>
+			<label index="tx_dlaccounting_domain_model_accountcode.title">Title</label>
+			<label index="tx_dlaccounting_domain_model_accountcode.code">Code</label>
+
+			<label index="tx_dlaccounting_domain_model_department">Department</label>
+			<label index="tx_dlaccounting_domain_model_department.title">Title</label>
+
+			<label index="tx_dlaccounting_domain_model_costtype">Cost Type</label>
+			<label index="tx_dlaccounting_domain_model_costtype.title">Title</label>
+			<label index="tx_dlaccounting_domain_model_costtype.cost_type">Cost Type</label>
+			<label index="tx_dlaccounting_domain_model_costtype.job_number">Job Number</label>
+			<label index="tx_dlaccounting_domain_model_costtype.department">Department</label>
+
+		</languageKey>
+
+        <languageKey index="de" type="array">
+            <label index="tx_dlaccounting_domain_model_bill">Bill</label>
+            <label index="tx_dlaccounting_domain_model_bill.user">User</label>
+
+            <label index="tx_dlaccounting_domain_model_bankaccount">Bank Account</label>
+            <label index="tx_dlaccounting_domain_model_bankaccount.first_name">First Name</label>
+            <label index="tx_dlaccounting_domain_model_bankaccount.last_name">Last Name</label>
+            <label index="tx_dlaccounting_domain_model_bankaccount.city">City</label>
+            <label index="tx_dlaccounting_domain_model_bankaccount.account_no">Account No</label>
+            <label index="tx_dlaccounting_domain_model_bankaccount.bank_code">Bank Code</label>
+            <label index="tx_dlaccounting_domain_model_bankaccount.user">User</label>
+
+            <label index="tx_dlaccounting_domain_model_billposition">Bill Position</label>
+            <label index="tx_dlaccounting_domain_model_billposition.date">Date</label>
+            <label index="tx_dlaccounting_domain_model_billposition.amount">Amount</label>
+            <label index="tx_dlaccounting_domain_model_billposition.description">Description</label>
+            <label index="tx_dlaccounting_domain_model_billposition.bill">Bill</label>
+            <label index="tx_dlaccounting_domain_model_billposition.account_code">Nuchungskonto</label>
+            <label index="tx_dlaccounting_domain_model_billposition.cost_type">Cost Type</label>
+
+            <label index="tx_dlaccounting_domain_model_accountcode">Buchungskonto</label>
+            <label index="tx_dlaccounting_domain_model_accountcode.title">Title</label>
+            <label index="tx_dlaccounting_domain_model_accountcode.code">Code</label>
+
+            <label index="tx_dlaccounting_domain_model_department">Department</label>
+            <label index="tx_dlaccounting_domain_model_department.title">Title</label>
+
+            <label index="tx_dlaccounting_domain_model_costtype">Cost Type</label>
+            <label index="tx_dlaccounting_domain_model_costtype.title">Title</label>
+            <label index="tx_dlaccounting_domain_model_costtype.cost_type">Cost Type</label>
+            <label index="tx_dlaccounting_domain_model_costtype.job_number">Job Number</label>
+            <label index="tx_dlaccounting_domain_model_costtype.department">Department</label>
+
+        </languageKey>
+	</data>
+</T3locallang>

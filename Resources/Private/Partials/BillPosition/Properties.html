@@ -1,0 +1,26 @@
+<table class="tx-dl-accounting" >
+	<tr>
+		<td>
+			<f:translate key="tx_dlaccounting_domain_model_billposition.date" />
+		</td>
+		<td>
+			{billPosition.date -> f:format.date()}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_dlaccounting_domain_model_billposition.amount" />
+		</td>
+		<td>
+			{billPosition.amount}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_dlaccounting_domain_model_billposition.description" />
+		</td>
+		<td>
+			{billPosition.description}
+		</td>
+	</tr>
+</table>
