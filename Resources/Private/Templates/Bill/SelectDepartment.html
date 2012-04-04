@@ -1,0 +1,9 @@
+<div class="well">
+	<ul class="nav nav-list">
+		<f:for each="{departments}" as="department">
+			<li>
+				<f:link.action action="new" arguments="{department: department}">{department.title}</f:link.action>
+			</li>
+		</f:for>
+	</ul>
+</div>

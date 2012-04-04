@@ -95,17 +95,18 @@ class Tx_DlAccounting_Controller_BillController extends Tx_Extbase_MVC_Controlle
 	/**
 	 * action new
 	 *
-	 * @param $newBill
-	 * @dontvalidate $newBill
+	 * @param $department
+	 * @dontvalidate $department
 	 * @return void
 	 */
 	public function newAction(Tx_DlAccounting_Domain_Model_Department $department = NULL) {
 		if($department == NULL) {
-			$this->forward('selectDepartmentAction');
+			$this->forward('selectDepartment');
 		} else {
-			$bil = $this->objectManager->get('Tx_DlAccounting_Domain_Model_Bill');
-			$this->billRepository->add('bill');
-			$this->view->assign('bill', $bill);
+			$bill = $this->objectManager->get('Tx_DlAccounting_Domain_Model_Bill');
+			$bill->setDepartment($department);
+			$this->billRepository->add($bill);
+			$this->forward('edit', NULL, NULL, array('bill' => $bill));
 		}
 	}
 
@@ -117,7 +118,7 @@ class Tx_DlAccounting_Controller_BillController extends Tx_Extbase_MVC_Controlle
 	public function selectDepartmentAction() {
 		$departments = $this->departmentRepository->findAll();
 
-		$this->view->add('departments', $departments);
+		$this->view->assign('departments', $departments);
 	}
 
 

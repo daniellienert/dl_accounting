@@ -32,6 +32,41 @@
 			<label index="tx_dlaccounting_domain_model_costtype.cost_type">costType</label>
 			<label index="tx_dlaccounting_domain_model_costtype.job_number">jobNumber</label>
 			<label index="tx_dlaccounting_domain_model_costtype.department">department</label>
+
+            <label index="tx_dlaccounting.general.save">Save</label>
+            <label index="tx_dlaccounting.general.cancel">Cancel</label>
 		</languageKey>
+
+        <languageKey index="de" type="array">
+            <label index="tx_dlaccounting_domain_model_bill">Abrechnung</label>
+            <label index="tx_dlaccounting_domain_model_bill.user">Benutzer</label>
+            <label index="tx_dlaccounting_domain_model_bankaccount">Konto</label>
+            <label index="tx_dlaccounting_domain_model_bankaccount.first_name">Vorname</label>
+            <label index="tx_dlaccounting_domain_model_bankaccount.last_name">Nachname</label>
+            <label index="tx_dlaccounting_domain_model_bankaccount.city">Ort</label>
+            <label index="tx_dlaccounting_domain_model_bankaccount.account_no">Kontonummer</label>
+            <label index="tx_dlaccounting_domain_model_bankaccount.bank_code">BLZ</label>
+            <label index="tx_dlaccounting_domain_model_bankaccount.user">Benutzer</label>
+            <label index="tx_dlaccounting_domain_model_billposition">BillPosition</label>
+            <label index="tx_dlaccounting_domain_model_billposition.date">Datum</label>
+            <label index="tx_dlaccounting_domain_model_billposition.amount">Betrag</label>
+            <label index="tx_dlaccounting_domain_model_billposition.description">Beschreibung</label>
+            <label index="tx_dlaccounting_domain_model_billposition.bill">Abrechnung</label>
+            <label index="tx_dlaccounting_domain_model_billposition.account_code">accountCode</label>
+            <label index="tx_dlaccounting_domain_model_billposition.cost_type">costType</label>
+            <label index="tx_dlaccounting_domain_model_accountcode">AccountCode</label>
+            <label index="tx_dlaccounting_domain_model_accountcode.title">title</label>
+            <label index="tx_dlaccounting_domain_model_accountcode.code">code</label>
+            <label index="tx_dlaccounting_domain_model_department">Department</label>
+            <label index="tx_dlaccounting_domain_model_department.title">title</label>
+            <label index="tx_dlaccounting_domain_model_costtype">CostType</label>
+            <label index="tx_dlaccounting_domain_model_costtype.title">title</label>
+            <label index="tx_dlaccounting_domain_model_costtype.cost_type">costType</label>
+            <label index="tx_dlaccounting_domain_model_costtype.job_number">jobNumber</label>
+            <label index="tx_dlaccounting_domain_model_costtype.department">department</label>
+
+            <label index="tx_dlaccounting.general.save">Speichern</label>
+            <label index="tx_dlaccounting.general.cancel">Abbrechen</label>
+        </languageKey>
 	</data>
 </T3locallang>

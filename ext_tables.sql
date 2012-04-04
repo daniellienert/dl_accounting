@@ -9,6 +9,7 @@ CREATE TABLE tx_dlaccounting_domain_model_bill (
 	billposition int(11) unsigned DEFAULT '0' NOT NULL,
 
 	user int(11) unsigned DEFAULT '0',
+	department int(11) unsigned DEFAULT '0',
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,

@@ -18,6 +18,12 @@ Otherwise your changes will be overwritten the next time you save the extension 
 
 <f:render partial="FormErrors" />
 
+<ul class="nav nav-tabs">
+	<li>
+		<f:link.action controller="BillPosition" action="new" arguments="{bill: bil}">Position hinzufügen</f:link.action>
+	</li>
+</ul>
+	
 <f:form method="post" action="update" name="bill" object="{bill}" >
 <f:render partial="Bill/FormFields" arguments="{bill:bill}" />
 	<f:form.submit value="Save" />
