@@ -64,11 +64,11 @@
             <label index="tx_dlaccounting_domain_model_accountcode.title">Title</label>
             <label index="tx_dlaccounting_domain_model_accountcode.code">Code</label>
 
-            <label index="tx_dlaccounting_domain_model_department">Department</label>
+            <label index="tx_dlaccounting_domain_model_department">Abteilung</label>
             <label index="tx_dlaccounting_domain_model_department.title">Title</label>
 
-            <label index="tx_dlaccounting_domain_model_costtype">Cost Type</label>
-            <label index="tx_dlaccounting_domain_model_costtype.title">Title</label>
+            <label index="tx_dlaccounting_domain_model_costtype">Kostentyp</label>
+            <label index="tx_dlaccounting_domain_model_costtype.title">Name</label>
             <label index="tx_dlaccounting_domain_model_costtype.cost_type">Cost Type</label>
             <label index="tx_dlaccounting_domain_model_costtype.job_number">Job Number</label>
             <label index="tx_dlaccounting_domain_model_costtype.department">Department</label>

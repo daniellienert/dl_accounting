@@ -19,8 +19,10 @@ Otherwise your changes will be overwritten the next time you save the extension 
 <f:render partial="FormErrors" />
 
 <f:form class="form-horizontal" method="post" action="create"  name="newBillPosition" object="{newBillPosition}">
-
-<f:render partial="BillPosition/FormFields" />
-	<f:form.submit class="btn btn-primary" arguments="{department: department}" value="{f:translate(key:'tx_dlaccounting.general.save')}" />
+	<f:render partial="BillPosition/FormFields" arguments="{costTypes:costTypes,accountCodes:accountCodes}"/>
+	<f:form.hidden property="bill" value="{bill}" />
+	<f:form.submit class="btn btn-primary" value="{f:translate(key:'tx_dlaccounting.general.save')}" />
+	<button class="btn"><f:link.action action="edit" controller="Bill" arguments="{bill:bill}"><f:translate key="tx_dlaccounting.general.cancel" /></f:link.action></button>
 </f:form>
+
 </f:section>

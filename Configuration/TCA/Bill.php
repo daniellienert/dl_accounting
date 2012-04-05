@@ -128,12 +128,6 @@ $TCA['tx_dlaccounting_domain_model_bill'] = array(
 				),
 			),
 		),
-
-		'billposition' => array(
-			'config' => array(
-				'type' => 'passthrough',
-			),
-		),
 	),
 );
 

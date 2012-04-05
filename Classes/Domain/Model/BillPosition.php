@@ -57,7 +57,7 @@ class Tx_DlAccounting_Domain_Model_BillPosition extends Tx_Extbase_DomainObject_
 	/**
 	 * bill
 	 *
-	 * @var Tx_Extbase_Persistence_ObjectStorage<Tx_DlAccounting_Domain_Model_Bill>
+	 * @var Tx_DlAccounting_Domain_Model_Bill
 	 */
 	protected $bill;
 
@@ -81,23 +81,8 @@ class Tx_DlAccounting_Domain_Model_BillPosition extends Tx_Extbase_DomainObject_
 	 * @return void
 	 */
 	public function __construct() {
-		//Do not remove the next line: It would break the functionality
-		$this->initStorageObjects();
 	}
 
-	/**
-	 * Initializes all Tx_Extbase_Persistence_ObjectStorage properties.
-	 *
-	 * @return void
-	 */
-	protected function initStorageObjects() {
-		/**
-		 * Do not modify this method!
-		 * It will be rewritten on each save in the extension builder
-		 * You may modify the constructor of this class instead
-		 */
-		$this->bill = new Tx_Extbase_Persistence_ObjectStorage();
-	}
 
 	/**
 	 * Returns the date
@@ -156,30 +141,11 @@ class Tx_DlAccounting_Domain_Model_BillPosition extends Tx_Extbase_DomainObject_
 		$this->description = $description;
 	}
 
-	/**
-	 * Adds a Bill
-	 *
-	 * @param Tx_DlAccounting_Domain_Model_Bill $bill
-	 * @return void
-	 */
-	public function addBill(Tx_DlAccounting_Domain_Model_Bill $bill) {
-		$this->bill->attach($bill);
-	}
-
-	/**
-	 * Removes a Bill
-	 *
-	 * @param Tx_DlAccounting_Domain_Model_Bill $billToRemove The Bill to be removed
-	 * @return void
-	 */
-	public function removeBill(Tx_DlAccounting_Domain_Model_Bill $billToRemove) {
-		$this->bill->detach($billToRemove);
-	}
 
 	/**
 	 * Returns the bill
 	 *
-	 * @return Tx_Extbase_Persistence_ObjectStorage<Tx_DlAccounting_Domain_Model_Bill> $bill
+	 * @return Tx_DlAccounting_Domain_Model_Bill $bill
 	 */
 	public function getBill() {
 		return $this->bill;
@@ -188,10 +154,10 @@ class Tx_DlAccounting_Domain_Model_BillPosition extends Tx_Extbase_DomainObject_
 	/**
 	 * Sets the bill
 	 *
-	 * @param Tx_Extbase_Persistence_ObjectStorage<Tx_DlAccounting_Domain_Model_Bill> $bill
+	 * @param Tx_DlAccounting_Domain_Model_Bill $bill
 	 * @return void
 	 */
-	public function setBill(Tx_Extbase_Persistence_ObjectStorage $bill) {
+	public function setBill(Tx_DlAccounting_Domain_Model_Bill $bill) {
 		$this->bill = $bill;
 	}
 

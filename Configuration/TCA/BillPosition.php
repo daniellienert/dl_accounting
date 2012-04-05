@@ -129,8 +129,8 @@ $TCA['tx_dlaccounting_domain_model_billposition'] = array(
 			'config' => array(
 				'type' => 'inline',
 				'foreign_table' => 'tx_dlaccounting_domain_model_bill',
-				'foreign_field' => 'billposition',
-				'maxitems'      => 9999,
+				'minitems' => 0,
+				'maxitems' => 1,
 				'appearance' => array(
 					'collapse' => 0,
 					'levelLinksPosition' => 'top',
@@ -140,6 +140,7 @@ $TCA['tx_dlaccounting_domain_model_billposition'] = array(
 				),
 			),
 		),
+
 		'account_code' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:dl_accounting/Resources/Private/Language/locallang_db.xml:tx_dlaccounting_domain_model_billposition.account_code',
@@ -157,6 +158,7 @@ $TCA['tx_dlaccounting_domain_model_billposition'] = array(
 				),
 			),
 		),
+
 		'cost_type' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:dl_accounting/Resources/Private/Language/locallang_db.xml:tx_dlaccounting_domain_model_billposition.cost_type',

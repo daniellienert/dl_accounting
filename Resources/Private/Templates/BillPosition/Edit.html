@@ -14,12 +14,13 @@ Otherwise your changes will be overwritten the next time you save the extension 
 <f:section name="main">
 <h1>Edit BillPosition</h1>
 
-<f:flashMessages />
+<ptx:flashMessages />
 
 <f:render partial="FormErrors" />
 
-<f:form method="post" action="update" name="billPosition" object="{billPosition}" >
-<f:render partial="BillPosition/FormFields" arguments="{billPosition:billPosition}" />
-	<f:form.submit value="Save" />
+<f:form method="post" class="form-horizontal" action="update" name="billPosition" object="{billPosition}" >
+<f:render partial="BillPosition/FormFields" arguments="{billPosition:billPosition,costTypes:costTypes,accountCodes:accountCodes}" />
+	<f:form.submit class="btn btn-primary" value="{f:translate(key:'tx_dlaccounting.general.save')}" />
+	<button class="btn"><f:link.action action="edit" controller="Bill" arguments="{bill:billPosition.bill}"><f:translate key="tx_dlaccounting.general.cancel" /></f:link.action></button>
 </f:form>
 </f:section>

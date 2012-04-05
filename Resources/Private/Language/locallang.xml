@@ -20,8 +20,8 @@
 			<label index="tx_dlaccounting_domain_model_billposition.amount">amount</label>
 			<label index="tx_dlaccounting_domain_model_billposition.description">description</label>
 			<label index="tx_dlaccounting_domain_model_billposition.bill">bill</label>
-			<label index="tx_dlaccounting_domain_model_billposition.account_code">accountCode</label>
-			<label index="tx_dlaccounting_domain_model_billposition.cost_type">costType</label>
+			<label index="tx_dlaccounting_domain_model_billposition.accountCode">accountCode</label>
+			<label index="tx_dlaccounting_domain_model_billposition.costtype">costType</label>
 			<label index="tx_dlaccounting_domain_model_accountcode">AccountCode</label>
 			<label index="tx_dlaccounting_domain_model_accountcode.title">title</label>
 			<label index="tx_dlaccounting_domain_model_accountcode.code">code</label>
@@ -29,8 +29,8 @@
 			<label index="tx_dlaccounting_domain_model_department.title">title</label>
 			<label index="tx_dlaccounting_domain_model_costtype">CostType</label>
 			<label index="tx_dlaccounting_domain_model_costtype.title">title</label>
-			<label index="tx_dlaccounting_domain_model_costtype.cost_type">costType</label>
-			<label index="tx_dlaccounting_domain_model_costtype.job_number">jobNumber</label>
+			<label index="tx_dlaccounting_domain_model_costtype.costType">costType</label>
+			<label index="tx_dlaccounting_domain_model_costtype.jobNumber">jobNumber</label>
 			<label index="tx_dlaccounting_domain_model_costtype.department">department</label>
 
             <label index="tx_dlaccounting.general.save">Save</label>
@@ -52,17 +52,17 @@
             <label index="tx_dlaccounting_domain_model_billposition.amount">Betrag</label>
             <label index="tx_dlaccounting_domain_model_billposition.description">Beschreibung</label>
             <label index="tx_dlaccounting_domain_model_billposition.bill">Abrechnung</label>
-            <label index="tx_dlaccounting_domain_model_billposition.account_code">accountCode</label>
-            <label index="tx_dlaccounting_domain_model_billposition.cost_type">costType</label>
+            <label index="tx_dlaccounting_domain_model_billposition.accountCode">Kostenart</label>
+            <label index="tx_dlaccounting_domain_model_billposition.costType">Kostenstelle</label>
             <label index="tx_dlaccounting_domain_model_accountcode">AccountCode</label>
             <label index="tx_dlaccounting_domain_model_accountcode.title">title</label>
             <label index="tx_dlaccounting_domain_model_accountcode.code">code</label>
-            <label index="tx_dlaccounting_domain_model_department">Department</label>
+            <label index="tx_dlaccounting_domain_model_department">Abteilung</label>
             <label index="tx_dlaccounting_domain_model_department.title">title</label>
             <label index="tx_dlaccounting_domain_model_costtype">CostType</label>
             <label index="tx_dlaccounting_domain_model_costtype.title">title</label>
-            <label index="tx_dlaccounting_domain_model_costtype.cost_type">costType</label>
-            <label index="tx_dlaccounting_domain_model_costtype.job_number">jobNumber</label>
+            <label index="tx_dlaccounting_domain_model_costtype.costType">Kostenstelle</label>
+            <label index="tx_dlaccounting_domain_model_costtype.jobNumber">jobNumber</label>
             <label index="tx_dlaccounting_domain_model_costtype.department">department</label>
 
             <label index="tx_dlaccounting.general.save">Speichern</label>

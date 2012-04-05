@@ -1,10 +1,56 @@
+
+<script>
+	$(function() {
+		$( "#date" ).datepicker();
+	});
+
+	jQuery(function($){
+		$.datepicker.regional['de'] = {
+			closeText: 'schließen',
+			prevText: '&#x3c;zurück',
+			nextText: 'Vor&#x3e;',
+			currentText: 'heute',
+			monthNames: ['Januar','Februar','März','April','Mai','Juni',
+			'Juli','August','September','Oktober','November','Dezember'],
+			monthNamesShort: ['Jan','Feb','Mär','Apr','Mai','Jun',
+			'Jul','Aug','Sep','Okt','Nov','Dez'],
+			dayNames: ['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'],
+			dayNamesShort: ['So','Mo','Di','Mi','Do','Fr','Sa'],
+			dayNamesMin: ['So','Mo','Di','Mi','Do','Fr','Sa'],
+			weekHeader: 'Wo',
+			dateFormat: 'dd.mm.yy',
+			firstDay: 1,
+			isRTL: false,
+			showMonthAfterYear: false,
+			yearSuffix: ''};
+		$.datepicker.setDefaults($.datepicker.regional['de']);
+	});
+
+</script>
+
 <fieldset>
 
 	<div class="control-group">
 		<label class="control-label" for="date"><f:translate key="tx_dlaccounting_domain_model_billposition.date" /></label>
 
 		<div class="controls">
-			<f:form.textfield property="date" value="{billPosition.date->f:format.date()}" />
+			<f:form.textfield property="date" id="date"  value="{billPosition.date->f:format.date()}" />
+		</div>
+	</div>
+
+	<div class="control-group">
+		<label class="control-label" for="costType"><f:translate key="tx_dlaccounting_domain_model_billposition.costType" /></label>
+
+		<div class="controls">
+			<f:form.select property="costType" id="costType" options="{costTypes}" optionValueField="uid" optionLabelField="title"/>
+		</div>
+	</div>
+
+	<div class="control-group">
+		<label class="control-label" for="accountCode"><f:translate key="tx_dlaccounting_domain_model_billposition.accountCode" /></label>
+
+		<div class="controls">
+			<f:form.select property="accountCode" id="accountCode" options="{accountCodes}" optionValueField="uid" optionLabelField="title"/>
 		</div>
 	</div>
 
@@ -12,15 +58,19 @@
 		<label class="control-label" for="amount"><f:translate key="tx_dlaccounting_domain_model_billposition.amount" /></label>
 
 		<div class="controls">
-			<f:form.textfield property="amount" />
+			<div class="input-append">
+				<f:form.textfield property="amount" />
+				<span class="add-on">€</span>
+			</div>
 		</div>
 	</div>
+
 
 	<div class="control-group">
 		<label class="control-label" for="description"><f:translate key="tx_dlaccounting_domain_model_billposition.description" /></label>
 
 		<div class="controls">
-			<f:form.textarea property="description" cols="20" rows="5" />
+			<f:form.textarea property="description" id="description" cols="20" rows="5" />
 		</div>
 	</div>
 </fieldset>

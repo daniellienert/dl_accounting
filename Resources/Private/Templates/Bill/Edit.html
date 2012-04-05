@@ -1,31 +1,37 @@
+{namespace ptx=Tx_PtExtbase_ViewHelpers}
+
 <f:layout name="Default" />
 
-This template displays a EDIT form for the current domain object.
-
-If you modify this template, do not forget to change the overwrite settings
-in /Configuration/ExtensionBuilder/settings.yaml:
-  Resources:
-    Private:
-      Templates:
-        Edit.html: keep
-
-Otherwise your changes will be overwritten the next time you save the extension in the extension builder
 
 <f:section name="main">
 <h1>Edit Bill</h1>
 
-<f:flashMessages />
+<ptx:flashMessages />
 
 <f:render partial="FormErrors" />
 
-<ul class="nav nav-tabs">
-	<li>
-		<f:link.action controller="BillPosition" action="new" arguments="{bill: bil}">Position hinzufügen</f:link.action>
-	</li>
-</ul>
-	
+<div class="btn-group">
+	<button class="btn"><f:link.action controller="Bill" action="new">Neue Abrechnung</f:link.action></button>
+	<button class="btn"><f:link.action controller="BillPosition" action="new" arguments="{bill: bill.uid}">Position hinzufügen</f:link.action></button>
+	<button class="btn"><f:link.action controller="BillPosition" action="new" arguments="{bill: bill.uid}">Druckansicht</f:link.action></button>
+	<button class="btn"><f:link.action controller="BillPosition" action="new" arguments="{bill: bill.uid}">Als PDF herunterladen</f:link.action></button>
+</div>
+
+<div class="billPositions">
+	<table class="table table-bordered table-striped tx-ptextlist-list tx-ptextlist-list-standard" id="tx-ptextlist-list-{config.listConfiguration.listIdentifier}">
+		<thead>
+			<f:render partial="{config.listConfiguration.headerPartial}" arguments="{listHeader:listHeader, listCaptions:listCaptions}" />
+		</thead>
+		<tbody>
+			<f:render partial="{config.listConfiguration.bodyPartial}" arguments="{listData:listData}" />
+			<f:render partial="{config.listConfiguration.aggregateRowsPartial}" arguments="{aggregateRows:aggregateRows}" />
+		</tbody>
+	</table>
+</div>
+
 <f:form method="post" action="update" name="bill" object="{bill}" >
-<f:render partial="Bill/FormFields" arguments="{bill:bill}" />
-	<f:form.submit value="Save" />
+	<f:render partial="Bill/FormFields" arguments="{bill:bill}" />
+	<f:form.submit class="btn btn-primary" value="{f:translate(key:'tx_dlaccounting.general.save')}" />
+	<button class="btn"><f:link.action action="list"><f:translate key="tx_dlaccounting.general.cancel" /></f:link.action></button>
 </f:form>
 </f:section>

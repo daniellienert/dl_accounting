@@ -9,6 +9,6 @@ plugin.tx_dlaccounting {
 	}
 	persistence {
 		# cat=plugin.tx_dlaccounting//a; type=int+; label=Default storage PID
-		storagePid = 10
+		storagePid = 9,10
 	}
 }

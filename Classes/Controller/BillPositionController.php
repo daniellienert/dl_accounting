@@ -31,7 +31,7 @@
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
-class Tx_DlAccounting_Controller_BillPositionController extends Tx_Extbase_MVC_Controller_ActionController {
+class Tx_DlAccounting_Controller_BillPositionController extends Tx_DlAccounting_Controller_AbstractController {
 
 	/**
 	 * billPositionRepository
@@ -39,6 +39,19 @@ class Tx_DlAccounting_Controller_BillPositionController extends Tx_Extbase_MVC_C
 	 * @var Tx_DlAccounting_Domain_Repository_BillPositionRepository
 	 */
 	protected $billPositionRepository;
+
+
+	/**
+	 * @var Tx_DlAccounting_Domain_Repository_CostTypeRepository
+	 */
+	protected $costTypeRepository;
+
+
+	/**
+	 * @var Tx_DlAccounting_Domain_Repository_AccountCodeRepository
+	 */
+	protected $accountCodeRepository;
+
 
 	/**
 	 * injectBillPositionRepository
@@ -50,15 +63,23 @@ class Tx_DlAccounting_Controller_BillPositionController extends Tx_Extbase_MVC_C
 		$this->billPositionRepository = $billPositionRepository;
 	}
 
+
 	/**
-	 * action list
-	 *
-	 * @return void
+	 * @param Tx_DlAccounting_Domain_Repository_CostTypeRepository $costTypeRepository
 	 */
-	public function listAction() {
-		$billPositions = $this->billPositionRepository->findAll();
-		$this->view->assign('billPositions', $billPositions);
+	public function injectCostTypeRepository(Tx_DlAccounting_Domain_Repository_CostTypeRepository $costTypeRepository) {
+		$this->costTypeRepository = $costTypeRepository;
 	}
+
+
+
+	/**
+	 * @param Tx_DlAccounting_Domain_Repository_AccountCodeRepository $accountCodeRepository
+	 */
+	public function injectAccountCodeRepository(Tx_DlAccounting_Domain_Repository_AccountCodeRepository $accountCodeRepository) {
+		$this->accountCodeRepository = $accountCodeRepository;
+	}
+
 
 	/**
 	 * action show
@@ -67,18 +88,32 @@ class Tx_DlAccounting_Controller_BillPositionController extends Tx_Extbase_MVC_C
 	 * @return void
 	 */
 	public function showAction(Tx_DlAccounting_Domain_Model_BillPosition $billPosition) {
+		if(!$this->checkAccessOnBill($billPosition->getBill())) {
+			$this->redirect('list', 'bill');
+		}
+
 		$this->view->assign('billPosition', $billPosition);
 	}
 
 	/**
 	 * action new
 	 *
-	 * @param $newBillPosition
+	 * @param $bill Tx_DlAccounting_Domain_Model_Bill
+	 * @param $newBillPosition Tx_DlAccounting_Domain_Model_BillPosition
+	 *
 	 * @dontvalidate $newBillPosition
 	 * @return void
 	 */
-	public function newAction(Tx_DlAccounting_Domain_Model_BillPosition $newBillPosition = NULL) {
+	public function newAction(Tx_DlAccounting_Domain_Model_Bill $bill, Tx_DlAccounting_Domain_Model_BillPosition $newBillPosition = NULL) {
+
+		if(!$this->checkAccessOnBill($bill)) {
+			$this->redirect('list', 'bill');
+		}
+
+		$this->view->assign('accountCodes', $this->accountCodeRepository->findAll());
+		$this->view->assign('costTypes', $this->costTypeRepository->findAll());
 		$this->view->assign('newBillPosition', $newBillPosition);
+		$this->view->assign('bill', $bill);
 	}
 
 	/**
@@ -88,9 +123,14 @@ class Tx_DlAccounting_Controller_BillPositionController extends Tx_Extbase_MVC_C
 	 * @return void
 	 */
 	public function createAction(Tx_DlAccounting_Domain_Model_BillPosition $newBillPosition) {
+
+		if(!$this->checkAccessOnBill($newBillPosition->getBill())) {
+			$this->redirect('list', 'bill');
+		}
+
 		$this->billPositionRepository->add($newBillPosition);
 		$this->flashMessageContainer->add('Your new BillPosition was created.');
-		$this->redirect('list');
+		$this->redirect('edit', 'Bill', NULL, array('bill' => $newBillPosition->getBill()));
 	}
 
 	/**
@@ -100,6 +140,13 @@ class Tx_DlAccounting_Controller_BillPositionController extends Tx_Extbase_MVC_C
 	 * @return void
 	 */
 	public function editAction(Tx_DlAccounting_Domain_Model_BillPosition $billPosition) {
+
+		if(!$this->checkAccessOnBill($billPosition->getBill())) {
+			$this->redirect('list', 'bill');
+		}
+
+		$this->view->assign('accountCodes', $this->accountCodeRepository->findAll());
+		$this->view->assign('costTypes', $this->costTypeRepository->findAll());
 		$this->view->assign('billPosition', $billPosition);
 	}
 
@@ -110,10 +157,18 @@ class Tx_DlAccounting_Controller_BillPositionController extends Tx_Extbase_MVC_C
 	 * @return void
 	 */
 	public function updateAction(Tx_DlAccounting_Domain_Model_BillPosition $billPosition) {
+
+		if(!$this->checkAccessOnBill($billPosition->getBill())) {
+			$this->redirect('list', 'bill');
+		}
+
 		$this->billPositionRepository->update($billPosition);
-		$this->flashMessageContainer->add('Your BillPosition was updated.');
-		$this->redirect('list');
+		$this->flashMessageContainer->add('Der Eintrag wurde aktualisiert.');
+
+		$this->redirect('edit', 'Bill', NULL, array('bill' => $billPosition->getBill()));
 	}
+
+
 
 	/**
 	 * action delete
@@ -122,9 +177,14 @@ class Tx_DlAccounting_Controller_BillPositionController extends Tx_Extbase_MVC_C
 	 * @return void
 	 */
 	public function deleteAction(Tx_DlAccounting_Domain_Model_BillPosition $billPosition) {
+
+		if(!$this->checkAccessOnBill($billPosition->getBill())) {
+			$this->redirect('list', 'bill');
+		}
+
 		$this->billPositionRepository->remove($billPosition);
-		$this->flashMessageContainer->add('Your BillPosition was removed.');
-		$this->redirect('list');
+		$this->flashMessageContainer->add('Der Eintrag wurde gelöscht.');
+		$this->redirect('edit', 'Bill', NULL, array('bill' => $billPosition->getBill()));
 	}
 
 }

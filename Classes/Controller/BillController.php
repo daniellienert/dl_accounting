@@ -31,7 +31,7 @@
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
-class Tx_DlAccounting_Controller_BillController extends Tx_Extbase_MVC_Controller_ActionController {
+class Tx_DlAccounting_Controller_BillController extends Tx_DlAccounting_Controller_AbstractController {
 
 	/**
 	 * billRepository
@@ -40,6 +40,11 @@ class Tx_DlAccounting_Controller_BillController extends Tx_Extbase_MVC_Controlle
 	 */
 	protected $billRepository;
 
+
+	/**
+	 * @var Tx_Extbase_Domain_Repository_FrontendUserRepository
+	 */
+	protected $userRepository;
 
 
 	/**
@@ -56,6 +61,14 @@ class Tx_DlAccounting_Controller_BillController extends Tx_Extbase_MVC_Controlle
 		$this->departmentRepository = $departmentRepository;
 	}
 
+
+
+	/**
+	 * @param Tx_Extbase_Domain_Repository_FrontendUserRepository $userRepository
+	 */
+	public function injectUserRepository(Tx_Extbase_Domain_Repository_FrontendUserRepository $userRepository) {
+		$this->userRepository = $userRepository;
+	}
 
 
 	/**
@@ -103,10 +116,15 @@ class Tx_DlAccounting_Controller_BillController extends Tx_Extbase_MVC_Controlle
 		if($department == NULL) {
 			$this->forward('selectDepartment');
 		} else {
-			$bill = $this->objectManager->get('Tx_DlAccounting_Domain_Model_Bill');
+			$bill = $this->objectManager->get('Tx_DlAccounting_Domain_Model_Bill'); /** @var Tx_DlAccounting_Domain_Model_Bill $bill */
+
 			$bill->setDepartment($department);
+			$bill->setUser($this->getCurrentUser());
+
 			$this->billRepository->add($bill);
-			$this->forward('edit', NULL, NULL, array('bill' => $bill));
+			$this->objectManager->get('Tx_Extbase_Persistence_Manager')->persistAll();
+
+			$this->redirect('edit', NULL, NULL, array('bill' => $bill));
 		}
 	}
 
@@ -122,19 +140,6 @@ class Tx_DlAccounting_Controller_BillController extends Tx_Extbase_MVC_Controlle
 	}
 
 
-
-	/**
-	 * action create
-	 *
-	 * @param $newBill
-	 * @return void
-	 */
-	public function createAction(Tx_DlAccounting_Domain_Model_Bill $newBill) {
-		$this->billRepository->add($newBill);
-		$this->flashMessageContainer->add('Your new Bill was created.');
-		$this->redirect('list');
-	}
-
 	/**
 	 * action edit
 	 *
@@ -142,6 +147,14 @@ class Tx_DlAccounting_Controller_BillController extends Tx_Extbase_MVC_Controlle
 	 * @return void
 	 */
 	public function editAction(Tx_DlAccounting_Domain_Model_Bill $bill) {
+
+		if(!$this->checkAccessOnBill($bill)) {
+			$this->forward('list');
+		}
+
+		$positionList = Tx_PtExtlist_ExtlistContext_ExtlistContextFactory::getContextByCustomConfiguration($this->settings['extlist']['billPositions'], 'billPositions');
+		$this->view->assignMultiple($positionList->getAllListTemplateParts());
+
 		$this->view->assign('bill', $bill);
 	}
 
@@ -152,6 +165,11 @@ class Tx_DlAccounting_Controller_BillController extends Tx_Extbase_MVC_Controlle
 	 * @return void
 	 */
 	public function updateAction(Tx_DlAccounting_Domain_Model_Bill $bill) {
+
+		if(!$this->checkAccessOnBill($bill)) {
+			$this->forward('list');
+		}
+
 		$this->billRepository->update($bill);
 		$this->flashMessageContainer->add('Your Bill was updated.');
 		$this->redirect('list');
@@ -164,10 +182,14 @@ class Tx_DlAccounting_Controller_BillController extends Tx_Extbase_MVC_Controlle
 	 * @return void
 	 */
 	public function deleteAction(Tx_DlAccounting_Domain_Model_Bill $bill) {
+
+		if(!$this->checkAccessOnBill($bill)) {
+			$this->forward('list');
+		}
+
 		$this->billRepository->remove($bill);
 		$this->flashMessageContainer->add('Your Bill was removed.');
 		$this->redirect('list');
 	}
-
 }
 ?>

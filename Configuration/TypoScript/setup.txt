@@ -1,3 +1,6 @@
+
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:dl_accounting/Configuration/TypoScript/Extlist/BillPositions.ts">
+
 plugin.tx_dlaccounting {
 	view {
 		templateRootPath = {$plugin.tx_dlaccounting.view.templateRootPath}
@@ -9,22 +12,4 @@ plugin.tx_dlaccounting {
 	}
 }
 
-plugin.tx_dlaccounting._CSS_DEFAULT_STYLE (
-	input.f3-form-error {
-		background-color:#FF9F9F;
-		border: 1px #FF0000 solid;
-	}
-
-	.tx-dl-accounting table {
-		border-collapse:separate;
-		border-spacing:10px;
-	}
-
-	.tx-dl-accounting table th {
-		font-weight:bold;
-	}
-
-	.tx-dl-accounting table td {
-		vertical-align:top;
-	}
-)
+config.tx_extbase.persistence.classes.Tx_Extbase_Domain_Model_FrontendUser.mapping.recordType >
