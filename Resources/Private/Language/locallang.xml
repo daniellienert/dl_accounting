@@ -33,8 +33,11 @@
 			<label index="tx_dlaccounting_domain_model_costtype.jobNumber">jobNumber</label>
 			<label index="tx_dlaccounting_domain_model_costtype.department">department</label>
 
+            <label index="tx_dlaccounting_controller_bill.editBill">Edit Bill</label>
+
             <label index="tx_dlaccounting.general.save">Save</label>
             <label index="tx_dlaccounting.general.cancel">Cancel</label>
+            <label index="tx_dlaccounting.general.back">Back</label>
 		</languageKey>
 
         <languageKey index="de" type="array">
@@ -65,8 +68,11 @@
             <label index="tx_dlaccounting_domain_model_costtype.jobNumber">jobNumber</label>
             <label index="tx_dlaccounting_domain_model_costtype.department">department</label>
 
+            <label index="tx_dlaccounting_controller_bill.editBill">Abrechnung bearbeiten</label>
+
             <label index="tx_dlaccounting.general.save">Speichern</label>
             <label index="tx_dlaccounting.general.cancel">Abbrechen</label>
+            <label index="tx_dlaccounting.general.back">Zurück zur Übersicht</label>
         </languageKey>
 	</data>
 </T3locallang>

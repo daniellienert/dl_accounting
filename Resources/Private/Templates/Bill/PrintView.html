@@ -1,0 +1,70 @@
+{namespace ptx=Tx_PtExtbase_ViewHelpers}
+
+<f:layout name="Default" />
+
+
+<f:section name="main">
+
+	<div class="row-fluid" style="text-align: center">
+		<h1>
+			Abrechnung verauslagter Kosten - Veranstaltungen {currentYear}
+		</h1>
+	</div>
+
+	<div class="row-fluid" style="text-align: center">
+		Deine Auslagen müssen spätestens 4 Wochen nachdem sie entstanden sind im Diözesanbüro zur Auszahlung vorliegen. Später eintreffende Abrechnungen können nicht mehr
+		ausbezahlt werden. Die Ausstellung einer Spendenbescheinigung ist jedoch noch möglich.
+	</div>
+
+
+	<div class="row-fluid">
+		<div class="span6">
+			<h2 style="text-decoration:underline;">{bankAccount.lastName}, {bankAccount.firstName}</h2>
+			<small>Name, Vorname</small>
+		</div>
+
+		<div class="span6" style="text-align: right">
+			<h2 style="text-decoration:underline;">{bill.department.title}</h2>
+			<small>Funktion</small>
+		</div>
+	</div>
+
+	<br/>
+
+	<div class="billPositions">
+		<table class="table table-bordered table-striped tx-ptextlist-list tx-ptextlist-list-standard" id="tx-ptextlist-list-{config.listConfiguration.listIdentifier}">
+			<thead>
+				<f:render partial="{config.listConfiguration.headerPartial}" arguments="{listHeader:listHeader, listCaptions:listCaptions}" />
+			</thead>
+			<tbody>
+				<f:render partial="{config.listConfiguration.bodyPartial}" arguments="{listData:listData}" />
+				<f:render partial="{config.listConfiguration.aggregateRowsPartial}" arguments="{aggregateRows:aggregateRows}" />
+			</tbody>
+		</table>
+	</div>
+
+	<div class="row-fluid">
+		<div class="span11 offset1">
+			<h3>Ich beantrage die Überweisung der Kosten auf das angegebene Konto</h3>
+			<h3>Konto: {bankAccount.accountNo}, BLZ: {bankAccount.bankCode}</h3>
+		</div>
+	</div>
+
+
+	<div class="well" style="padding:40px 20px 10px 20px">
+		<div class="row-fluid">
+			<div class="span4">
+				sachlich richtig
+			</div>
+
+			<div class="span4" style="text-align: center">
+				rechnerisch richtig
+			</div>
+
+			<div class="span4" style="text-align: right">
+				angewiesen
+			</div>
+		</div>
+	</div>
+
+</f:section>

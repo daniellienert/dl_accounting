@@ -12,15 +12,26 @@ in /Configuration/ExtensionBuilder/settings.yaml:
 Otherwise your changes will be overwritten the next time you save the extension in the extension builder
 
 <f:section name="main">
-<h1>Edit BillPosition</h1>
 
-<ptx:flashMessages />
+
+<ptx:flashMessages renderMode="div" messageCssClasses="{0: 'alert alert-success', 1: 'alert alert-warning', 2: 'alert alert-error'}" />
 
 <f:render partial="FormErrors" />
 
 <f:form method="post" class="form-horizontal" action="update" name="billPosition" object="{billPosition}" >
-<f:render partial="BillPosition/FormFields" arguments="{billPosition:billPosition,costTypes:costTypes,accountCodes:accountCodes}" />
-	<f:form.submit class="btn btn-primary" value="{f:translate(key:'tx_dlaccounting.general.save')}" />
-	<button class="btn"><f:link.action action="edit" controller="Bill" arguments="{bill:billPosition.bill}"><f:translate key="tx_dlaccounting.general.cancel" /></f:link.action></button>
+
+	<fieldset>
+
+		<legend>Eintrag bearbeiten</legend>
+		<br />
+
+		<f:render partial="BillPosition/FormFields" arguments="{billPosition:billPosition,costTypes:costTypes,accountCodes:accountCodes}" />
+
+		<div class="form-actions">
+			<f:form.submit class="btn btn-primary" value="{f:translate(key:'tx_dlaccounting.general.save')}" />
+			<button class="btn"><f:link.action action="edit" controller="Bill" arguments="{bill:billPosition.bill}"><f:translate key="tx_dlaccounting.general.cancel" /></f:link.action></button>
+		</div>
+
+	</fieldset>
 </f:form>
 </f:section>

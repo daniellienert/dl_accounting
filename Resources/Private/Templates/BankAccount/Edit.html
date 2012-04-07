@@ -1,25 +1,29 @@
 <f:layout name="Default" />
 
-This template displays a EDIT form for the current domain object.
-
-If you modify this template, do not forget to change the overwrite settings
-in /Configuration/ExtensionBuilder/settings.yaml:
-  Resources:
-    Private:
-      Templates:
-        Edit.html: keep
-
-Otherwise your changes will be overwritten the next time you save the extension in the extension builder
 
 <f:section name="main">
-<h1>Edit BankAccount</h1>
 
-<f:flashMessages />
+	<f:flashMessages />
 
-<f:render partial="FormErrors" />
+	<f:render partial="FormErrors" />
 
-<f:form method="post" action="update" name="bankAccount" object="{bankAccount}" >
-<f:render partial="BankAccount/FormFields" arguments="{bankAccount:bankAccount}" />
-	<f:form.submit value="Save" />
-</f:form>
+	<f:form method="post" class="form-horizontal" action="update" name="bankAccount" object="{bankAccount}" >
+
+		<fieldset>
+
+			<legend>Formularangaben bearbeiten</legend>
+			<br />
+
+			<f:render partial="BankAccount/FormFields" arguments="{bankAccount:bankAccount}" />
+
+			<div class="form-actions">
+				<f:form.submit class="btn btn-primary" value="{f:translate(key:'tx_dlaccounting.general.save')}" />
+				<button class="btn"><f:link.action action="edit" controller="Bill" arguments="{bill:bill}"><f:translate key="tx_dlaccounting.general.cancel" /></f:link.action></button>
+			</div>
+
+			<f:form.hidden name="bill" value="{bill}" />
+
+		</fieldset>
+	</f:form>
+
 </f:section>

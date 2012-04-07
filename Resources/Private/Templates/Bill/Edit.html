@@ -4,34 +4,47 @@
 
 
 <f:section name="main">
-<h1>Edit Bill</h1>
+	<h1><f:translate key="tx_dlaccounting_controller_bill.editBill" /></h1>
+	<br />
 
-<ptx:flashMessages />
+	<ptx:flashMessages renderMode="div" messageCssClasses="{0: 'alert alert-success', 1: 'alert alert-warning', 2: 'alert alert-error'}" />
 
-<f:render partial="FormErrors" />
+	<f:render partial="FormErrors" />
 
-<div class="btn-group">
-	<button class="btn"><f:link.action controller="Bill" action="new">Neue Abrechnung</f:link.action></button>
-	<button class="btn"><f:link.action controller="BillPosition" action="new" arguments="{bill: bill.uid}">Position hinzufügen</f:link.action></button>
-	<button class="btn"><f:link.action controller="BillPosition" action="new" arguments="{bill: bill.uid}">Druckansicht</f:link.action></button>
-	<button class="btn"><f:link.action controller="BillPosition" action="new" arguments="{bill: bill.uid}">Als PDF herunterladen</f:link.action></button>
-</div>
+	<div class="btn-group">
+		<f:link.action controller="Bill" action="new"><button class="btn">Neue Abrechnung</button></f:link.action>
+		<f:link.action controller="Bill" action="printView" arguments="{bill: bill}" pageUid="11"><button class="btn">Druckansicht</button></f:link.action>
+		<f:link.action controller="Bill" action="downloadPdf" arguments="{bill: bill}"><button class="btn">Als PDF herunterladen</button></f:link.action>
+	</div>
 
-<div class="billPositions">
-	<table class="table table-bordered table-striped tx-ptextlist-list tx-ptextlist-list-standard" id="tx-ptextlist-list-{config.listConfiguration.listIdentifier}">
-		<thead>
-			<f:render partial="{config.listConfiguration.headerPartial}" arguments="{listHeader:listHeader, listCaptions:listCaptions}" />
-		</thead>
-		<tbody>
-			<f:render partial="{config.listConfiguration.bodyPartial}" arguments="{listData:listData}" />
-			<f:render partial="{config.listConfiguration.aggregateRowsPartial}" arguments="{aggregateRows:aggregateRows}" />
-		</tbody>
-	</table>
-</div>
+	<br />
 
-<f:form method="post" action="update" name="bill" object="{bill}" >
-	<f:render partial="Bill/FormFields" arguments="{bill:bill}" />
-	<f:form.submit class="btn btn-primary" value="{f:translate(key:'tx_dlaccounting.general.save')}" />
-	<button class="btn"><f:link.action action="list"><f:translate key="tx_dlaccounting.general.cancel" /></f:link.action></button>
-</f:form>
+	<div class="billPositions">
+		<table class="table table-bordered table-striped tx-ptextlist-list tx-ptextlist-list-standard" id="tx-ptextlist-list-{config.listConfiguration.listIdentifier}">
+			<thead>
+				<f:render partial="{config.listConfiguration.headerPartial}" arguments="{listHeader:listHeader, listCaptions:listCaptions}" />
+			</thead>
+			<tbody>
+				<f:render partial="{config.listConfiguration.bodyPartial}" arguments="{listData:listData}" />
+				<f:render partial="{config.listConfiguration.aggregateRowsPartial}" arguments="{aggregateRows:aggregateRows}" />
+			</tbody>
+		</table>
+	</div>
+
+	<div style="text-align:right">
+		<button class="btn btn-primary"><f:link.action controller="BillPosition" action="new" arguments="{bill: bill.uid}">Position hinzufügen</f:link.action></button>
+	</div>
+	<br/>
+
+	<div class="well">
+		<f:render partial="BankAccount/Properties" arguments="{bankAccount:bankAccount, bill:bill}" />
+	</div>
+
+	<f:form method="post" action="update" name="bill" object="{bill}" >
+		<div class="form-actions">
+			<f:render partial="Bill/FormFields" arguments="{bill:bill}" />
+			<f:form.submit class="btn" value="{f:translate(key:'tx_dlaccounting.general.back')}" />
+		</div>
+	</f:form>
+
 </f:section>

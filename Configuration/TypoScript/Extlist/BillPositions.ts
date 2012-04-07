@@ -54,6 +54,16 @@ plugin.tx_dlaccounting.settings.extlist.billPositions {
 			field = amount
 		}
 
+		costTypeType {
+			table = costtype
+			field = cost_type
+		}
+
+		costTypeJob {
+			table = costtype
+			field = job_number
+		}
+
 		costTypeTitle {
 			table = costtype
 			field = title
@@ -64,6 +74,10 @@ plugin.tx_dlaccounting.settings.extlist.billPositions {
 			field = title
 		}
 
+		accountCodeCode {
+			table = accountcode
+			field = code
+		}
 	}
 
 	columns {
@@ -118,34 +132,53 @@ plugin.tx_dlaccounting.settings.extlist.billPositions {
 			renderObj {
 				10 = TEXT
 				10 {
-                    value = Bearbeiten
+                    value = <button class="btn">Bearbeiten</button>
 					typolink.parameter.data = TSFE:id
                     typolink.additionalParams.dataWrap = &tx_dlaccounting_acc[billPosition]={field:positionUid}&tx_dlaccounting_acc[action]=edit&tx_dlaccounting_acc[controller]=BillPosition
-                    wrap = <button class="btn">|</button>&nbsp;
 				}
+
+				15 = TEXT
+				15.value = &nbsp;
 
 				20 = TEXT
 				20 {
-					value = Löschen
+					value = <button class="btn btn-danger">Löschen</button>
 					typolink.parameter.data = TSFE:id
 					typolink.additionalParams.dataWrap = &tx_dlaccounting_acc[billPosition]={field:positionUid}&tx_dlaccounting_acc[action]=delete&tx_dlaccounting_acc[controller]=BillPosition
-					wrap = <button class="btn btn-danger">|</button>
 				}
 			}
 		}
 	}
-/*
+
+	aggregateData {
+		sum {
+			fieldIdentifier = amount
+			method = sum
+		}
+	}
+
+	aggregateRows {
+		10 {
+			amount {
+				aggregateDataIdentifier = sum
+				renderObj = TEXT
+				renderObj.dataWrap (
+					&sum;: <b>{field:sum}</b>
+				)
+			}
+		}
+	}
+
 	filters {
-		filterbox1 {
+		bill {
 			filterConfigs {
 				10 < plugin.tx_ptextlist.prototype.filter.string
 				10 {
-					filterIdentifier = search
+					filterIdentifier = billFilter
 					label =
-					fieldIdentifier = *
+					fieldIdentifier = bill
 				}
 			}
 		}
 	}
-*/
 }

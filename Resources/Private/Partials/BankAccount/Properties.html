@@ -1,42 +1,29 @@
-<table class="tx-dl-accounting" >
-	<tr>
-		<td>
-			<f:translate key="tx_dlaccounting_domain_model_bankaccount.first_name" />
-		</td>
-		<td>
-			{bankAccount.firstName}
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<f:translate key="tx_dlaccounting_domain_model_bankaccount.last_name" />
-		</td>
-		<td>
-			{bankAccount.lastName}
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<f:translate key="tx_dlaccounting_domain_model_bankaccount.city" />
-		</td>
-		<td>
-			{bankAccount.city}
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<f:translate key="tx_dlaccounting_domain_model_bankaccount.account_no" />
-		</td>
-		<td>
-			{bankAccount.accountNo}
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<f:translate key="tx_dlaccounting_domain_model_bankaccount.bank_code" />
-		</td>
-		<td>
-			{bankAccount.bankCode}
-		</td>
-	</tr>
-</table>
+<h4>Angaben zum Formular</h4>
+<br />
+
+<div class="row">
+	<span class="span2"><f:translate key="tx_dlaccounting_domain_model_bankaccount.first_name" /></span>
+	<span class="span2">{bankAccount.firstName}</span>
+
+	<span class="span2"><f:translate key="tx_dlaccounting_domain_model_bankaccount.last_name" /></span>
+	<span class="span2">{bankAccount.lastName}</span>
+</div>
+
+<div class="row">
+	<span class="span2"><f:translate key="tx_dlaccounting_domain_model_bankaccount.city" /></span>
+	<span class="span6">{bankAccount.city}</span>
+</div>
+
+<div class="row">
+	<span class="span2"><f:translate key="tx_dlaccounting_domain_model_bankaccount.account_no" /></span>
+	<span class="span2">{bankAccount.accountNo}</span>
+
+	<span class="span2"><f:translate key="tx_dlaccounting_domain_model_bankaccount.bank_code" /></span>
+	<span class="span2">{bankAccount.bankCode}</span>
+</div>
+
+<div class="row">
+	<div style="text-align: right">
+		<button class="btn"><f:link.action controller="BankAccount" action="edit" arguments="{bankAccount:bankAccount, bill:bill}">Bearbeiten</f:link.action></button>
+	</div>
+</div>

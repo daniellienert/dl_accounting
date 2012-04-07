@@ -1,3 +1,4 @@
+{namespace ptx=Tx_PtExtbase_ViewHelpers}
 
 <script>
 	$(function() {
@@ -28,8 +29,6 @@
 
 </script>
 
-<fieldset>
-
 	<div class="control-group">
 		<label class="control-label" for="date"><f:translate key="tx_dlaccounting_domain_model_billposition.date" /></label>
 
@@ -42,7 +41,16 @@
 		<label class="control-label" for="costType"><f:translate key="tx_dlaccounting_domain_model_billposition.costType" /></label>
 
 		<div class="controls">
-			<f:form.select property="costType" id="costType" options="{costTypes}" optionValueField="uid" optionLabelField="title"/>
+			<f:form.hidden property="costType"/>
+			<select name="tx_dlaccounting_acc[billPosition][costType]">
+				<f:for each="{costTypes}" as="costType">
+					<ptx:ifValueChanges value="{costType.department.uid}">
+						<optgroup label="{costType.department.title}"></optgroup>
+					</ptx:ifValueChanges>
+
+					<option {f:if(condition:'{billPosition.costType.uid} == {costType.uid}', then:'selected="selected"')} label="{costType.title}">{costType.uid}</option>
+				</f:for>
+			</select>
 		</div>
 	</div>
 
@@ -73,4 +81,3 @@
 			<f:form.textarea property="description" id="description" cols="20" rows="5" />
 		</div>
 	</div>
-</fieldset>

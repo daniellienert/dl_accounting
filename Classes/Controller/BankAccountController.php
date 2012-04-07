@@ -31,7 +31,7 @@
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
-class Tx_DlAccounting_Controller_BankAccountController extends Tx_Extbase_MVC_Controller_ActionController {
+class Tx_DlAccounting_Controller_BankAccountController extends Tx_DlAccounting_Controller_AbstractController {
 
 	/**
 	 * bankAccountRepository
@@ -50,69 +50,56 @@ class Tx_DlAccounting_Controller_BankAccountController extends Tx_Extbase_MVC_Co
 		$this->bankAccountRepository = $bankAccountRepository;
 	}
 
-	/**
-	 * action list
-	 *
-	 * @return void
-	 */
-	public function listAction() {
-		$bankAccounts = $this->bankAccountRepository->findAll();
-		$this->view->assign('bankAccounts', $bankAccounts);
-	}
-
-	/**
-	 * action show
-	 *
-	 * @param $bankAccount
-	 * @return void
-	 */
-	public function showAction(Tx_DlAccounting_Domain_Model_BankAccount $bankAccount) {
-		$this->view->assign('bankAccount', $bankAccount);
-	}
-
-	/**
-	 * action new
-	 *
-	 * @param $newBankAccount
-	 * @dontvalidate $newBankAccount
-	 * @return void
-	 */
-	public function newAction(Tx_DlAccounting_Domain_Model_BankAccount $newBankAccount = NULL) {
-		$this->view->assign('newBankAccount', $newBankAccount);
-	}
-
-	/**
-	 * action create
-	 *
-	 * @param $newBankAccount
-	 * @return void
-	 */
-	public function createAction(Tx_DlAccounting_Domain_Model_BankAccount $newBankAccount) {
-		$this->bankAccountRepository->add($newBankAccount);
-		$this->flashMessageContainer->add('Your new BankAccount was created.');
-		$this->redirect('list');
-	}
 
 	/**
 	 * action edit
 	 *
-	 * @param $bankAccount
+	 * @param $bankAccount Tx_DlAccounting_Domain_Model_BankAccount
+	 * @param $bill Tx_DlAccounting_Domain_Model_Bill
 	 * @return void
 	 */
-	public function editAction(Tx_DlAccounting_Domain_Model_BankAccount $bankAccount) {
+	public function editAction(Tx_DlAccounting_Domain_Model_BankAccount $bankAccount, Tx_DlAccounting_Domain_Model_Bill $bill) {
+
+		if(!$this->checkAccessOnBankAccount($bankAccount)) {
+			$this->redirect('list', 'bill');
+		}
+
 		$this->view->assign('bankAccount', $bankAccount);
+		$this->view->assign('bill', $bill);
 	}
+
+
 
 	/**
 	 * action update
 	 *
-	 * @param $bankAccount
+	 * @param $bankAccount Tx_DlAccounting_Domain_Model_BankAccount
+	 * @param $bill Tx_DlAccounting_Domain_Model_Bill
 	 * @return void
 	 */
-	public function updateAction(Tx_DlAccounting_Domain_Model_BankAccount $bankAccount) {
+	public function updateAction(Tx_DlAccounting_Domain_Model_BankAccount $bankAccount, Tx_DlAccounting_Domain_Model_Bill $bill) {
+
+		if(!$this->checkAccessOnBankAccount($bankAccount)) {
+			$this->redirect('list', 'bill');
+		}
+
 		$this->bankAccountRepository->update($bankAccount);
 		$this->flashMessageContainer->add('Your BankAccount was updated.');
-		$this->redirect('list');
+		$this->forward('edit','Bill',NULL,array('bill' => $bill));
+	}
+
+
+
+	/**
+	 * @param Tx_DlAccounting_Domain_Model_BankAccount $bankAccount
+	 */
+	protected function checkAccessOnBankAccount(Tx_DlAccounting_Domain_Model_BankAccount $bankAccount) {
+		if($bankAccount->getUser()->getUid() == (int) $GLOBALS['TSFE']->fe_user->user['uid']) {
+			return true;
+		} else {
+			$this->flashMessageContainer->add('Dies sind nicht deine Kontodaten! Finger weg!', 'Fehlende Berechtigung', t3lib_FlashMessage::ERROR);
+			return FALSE;
+		}
 	}
 
 }

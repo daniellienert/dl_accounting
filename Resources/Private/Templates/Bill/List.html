@@ -1,34 +1,30 @@
 <f:layout name="Default" />
 
-This Template is responsible for creating a table of domain objects.
-
-If you modify this template, do not forget to change the overwrite settings
-in /Configuration/ExtensionBuilder/settings.yaml:
-  Resources:
-    Private:
-      Templates:
-        List.html: keep
-
-Otherwise your changes will be overwritten the next time you save the extension in the extension builder
 
 <f:section name="main">
-<h1>Listing for Bill</h1>
+<h1>Deine Abrechnungen</h1>
 
-<f:flashMessages />
+<ptx:flashMessages renderMode="div" messageCssClasses="{0: 'alert alert-success', 1: 'alert alert-warning', 2: 'alert alert-error'}" />
 
-<table  class="tx_dlaccounting" >
-	<tr>
-		<th> </th>
-		<th> </th>
-	</tr>
+<div style="text-align:right">
+	<f:link.action action="new" arguments="{bill: bill.uid}"><button class="btn btn-primary">Neue Abrechnung</button></f:link.action>
+</div>
+<br />
 
-	<f:for each="{bills}" as="bill">
-		<tr>
-			<td><f:link.action action="edit" arguments="{bill : bill}">Edit</f:link.action></td>
-			<td><f:link.action action="delete" arguments="{bill : bill}">Delete</f:link.action></td>
-		</tr>
-	</f:for>
-</table>
+<div class="billList">
+	<table class="table table-bordered table-striped tx-ptextlist-list tx-ptextlist-list-standard" id="tx-ptextlist-list-{config.listConfiguration.listIdentifier}">
+		<thead>
+			<f:render partial="{config.listConfiguration.headerPartial}" arguments="{listHeader:listHeader, listCaptions:listCaptions}" />
+		</thead>
+		<tbody>
+			<f:render partial="{config.listConfiguration.bodyPartial}" arguments="{listData:listData}" />
+			<f:render partial="{config.listConfiguration.aggregateRowsPartial}" arguments="{aggregateRows:aggregateRows}" />
+		</tbody>
+	</table>
+</div>
 
-<f:link.action action="new">New Bill</f:link.action>
+<div style="text-align:right">
+	<f:link.action action="new" arguments="{bill: bill.uid}"><button class="btn btn-primary">Neue Abrechnung</button></f:link.action>
+</div>
+
 </f:section>

@@ -48,6 +48,12 @@ class Tx_DlAccounting_Controller_BillController extends Tx_DlAccounting_Controll
 
 
 	/**
+	 * @var Tx_DlAccounting_Domain_Repository_BankAccountRepository
+	 */
+	protected $bankAccountRepository;
+
+
+	/**
 	 * @var Tx_DlAccounting_Domain_Repository_DepartmentRepository
 	 */
 	protected $departmentRepository;
@@ -81,14 +87,24 @@ class Tx_DlAccounting_Controller_BillController extends Tx_DlAccounting_Controll
 		$this->billRepository = $billRepository;
 	}
 
+
+
+	/**
+	 * @param Tx_DlAccounting_Domain_Repository_BankAccountRepository $bankAccountRepository
+	 */
+	public function injectBankAccountRepository(Tx_DlAccounting_Domain_Repository_BankAccountRepository $bankAccountRepository) {
+		$this->bankAccountRepository = $bankAccountRepository;
+	}
+
+
 	/**
 	 * action list
 	 *
 	 * @return void
 	 */
 	public function listAction() {
-		$bills = $this->billRepository->findAll();
-		$this->view->assign('bills', $bills);
+		$positionList = Tx_PtExtlist_ExtlistContext_ExtlistContextFactory::getContextByCustomConfiguration($this->settings['extlist']['bill'], 'bill');
+		$this->view->assignMultiple($positionList->getAllListTemplateParts());
 	}
 
 
@@ -140,6 +156,45 @@ class Tx_DlAccounting_Controller_BillController extends Tx_DlAccounting_Controll
 	}
 
 
+
+	public function printViewAction(Tx_DlAccounting_Domain_Model_Bill $bill) {
+		if(!$this->checkAccessOnBill($bill)) {
+			$this->forward('list');
+		}
+
+		$bankAccount = $this->bankAccountRepository->findOneByUser($this->getCurrentUser());
+		$this->view->assign('bankAccount', $bankAccount);
+
+		$positionList = Tx_PtExtlist_ExtlistContext_ExtlistContextFactory::getContextByCustomConfiguration($this->settings['extlist']['billPositionsPrint'], 'billPositions');
+		$positionList->getFilterBoxCollection()->getFilterboxByFilterboxIdentifier('bill')->getFilterByFilterIdentifier('billFilter')->setFilterValue($bill->getUid())->init();
+		$this->view->assignMultiple($positionList->getAllListTemplateParts());
+
+		$this->view->assign('bill', $bill);
+
+		$this->view->assign('currentYear', date('Y'));
+	}
+
+
+
+	public function downloadPdfAction(Tx_DlAccounting_Domain_Model_Bill $bill) {
+			if(!$this->checkAccessOnBill($bill)) {
+				$this->forward('list');
+			}
+
+			$bankAccount = $this->bankAccountRepository->findOneByUser($this->getCurrentUser());
+			$this->view->assign('bankAccount', $bankAccount);
+
+			$positionList = Tx_PtExtlist_ExtlistContext_ExtlistContextFactory::getContextByCustomConfiguration($this->settings['extlist']['billPositionsPrint'], 'billPositions');
+			$positionList->getFilterBoxCollection()->getFilterboxByFilterboxIdentifier('bill')->getFilterByFilterIdentifier('billFilter')->setFilterValue($bill->getUid())->init();
+			$this->view->assignMultiple($positionList->getAllListTemplateParts());
+
+			$this->view->assign('bill', $bill);
+
+			$this->view->assign('currentYear', date('Y'));
+	}
+
+
+
 	/**
 	 * action edit
 	 *
@@ -152,11 +207,23 @@ class Tx_DlAccounting_Controller_BillController extends Tx_DlAccounting_Controll
 			$this->forward('list');
 		}
 
+		$bankAccount = $this->bankAccountRepository->findOneByUser($this->getCurrentUser());
+		if(!$bankAccount) {
+			$bankAccount = $this->objectManager->get('Tx_DlAccounting_Domain_Model_BankAccount'); /** @var Tx_DlAccounting_Domain_Model_BankAccount $bankAccount  */
+			$bankAccount->setUser($this->getCurrentUser());
+			$this->bankAccountRepository->add($bankAccount);
+			$this->objectManager->get('Tx_Extbase_Persistence_Manager')->persistAll();
+		}
+		$this->view->assign('bankAccount', $bankAccount);
+
 		$positionList = Tx_PtExtlist_ExtlistContext_ExtlistContextFactory::getContextByCustomConfiguration($this->settings['extlist']['billPositions'], 'billPositions');
+		$positionList->getFilterBoxCollection()->getFilterboxByFilterboxIdentifier('bill')->getFilterByFilterIdentifier('billFilter')->setFilterValue($bill->getUid())->init();
 		$this->view->assignMultiple($positionList->getAllListTemplateParts());
 
 		$this->view->assign('bill', $bill);
 	}
+
+
 
 	/**
 	 * action update
@@ -174,6 +241,8 @@ class Tx_DlAccounting_Controller_BillController extends Tx_DlAccounting_Controll
 		$this->flashMessageContainer->add('Your Bill was updated.');
 		$this->redirect('list');
 	}
+
+
 
 	/**
 	 * action delete

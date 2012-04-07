@@ -12,17 +12,26 @@ in /Configuration/ExtensionBuilder/settings.yaml:
 Otherwise your changes will be overwritten the next time you save the extension in the extension builder
 
 <f:section name="main">
-<h1>New BillPosition</h1>
 
 <f:flashMessages />
 
 <f:render partial="FormErrors" />
 
 <f:form class="form-horizontal" method="post" action="create"  name="newBillPosition" object="{newBillPosition}">
-	<f:render partial="BillPosition/FormFields" arguments="{costTypes:costTypes,accountCodes:accountCodes}"/>
-	<f:form.hidden property="bill" value="{bill}" />
-	<f:form.submit class="btn btn-primary" value="{f:translate(key:'tx_dlaccounting.general.save')}" />
-	<button class="btn"><f:link.action action="edit" controller="Bill" arguments="{bill:bill}"><f:translate key="tx_dlaccounting.general.cancel" /></f:link.action></button>
+
+	<fieldset>
+
+		<legend>Neuer Eintrag</legend>
+		<br />
+
+			<f:render partial="BillPosition/FormFields" arguments="{costTypes:costTypes,accountCodes:accountCodes}"/>
+			<f:form.hidden property="bill" value="{bill}" />
+
+			<div class="form-actions">
+				<f:form.submit class="btn btn-primary" value="{f:translate(key:'tx_dlaccounting.general.save')}" />
+				<button class="btn"><f:link.action action="edit" controller="Bill" arguments="{bill:bill}"><f:translate key="tx_dlaccounting.general.cancel" /></f:link.action></button>
+			</div>
+		</fieldset>
 </f:form>
 
 </f:section>

@@ -1,5 +1,10 @@
+<legend>Wähle deine Funktion</legend>
+
 <div class="well">
 	<ul class="nav nav-list">
+		<li class="nav-header">
+		    Funktionen
+		 </li>
 		<f:for each="{departments}" as="department">
 			<li>
 				<f:link.action action="new" arguments="{department: department}">{department.title}</f:link.action>

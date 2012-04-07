@@ -7,7 +7,7 @@ Tx_Extbase_Utility_Extension::configurePlugin(
 	$_EXTKEY,
 	'Acc',
 	array(
-		'Bill' => 'list, show, new, create, edit, update, delete, selectDepartment',
+		'Bill' => 'list, new, edit, update, delete, selectDepartment, printView, pdfView',
 		'BankAccount' => 'list, show, new, create, edit, update',
 		'BillPosition' => 'list, show, new, create, edit, update, delete',
 		'AccountCode' => 'list, show, new, create, edit, update, delete',
@@ -17,7 +17,7 @@ Tx_Extbase_Utility_Extension::configurePlugin(
 	),
 	// non-cacheable actions
 	array(
-		'Bill' => 'create, update, delete',
+		'Bill' => 'list, new, edit, update, delete, selectDepartment, printView, downloadPdf',
 		'BankAccount' => 'create, update',
 		'BillPosition' => 'create, update, delete',
 		'AccountCode' => 'create, update, delete',

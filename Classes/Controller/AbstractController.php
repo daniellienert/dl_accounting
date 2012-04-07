@@ -38,6 +38,7 @@ class Tx_DlAccounting_Controller_AbstractController extends Tx_PtExtbase_Control
 	 */
 	protected function getCurrentUser() {
 		$userUid = (int) $GLOBALS['TSFE']->fe_user->user['uid'];
+
 		$user = $this->userRepository->findOneByUid($userUid);
 		return $user;
 	}

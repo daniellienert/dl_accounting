@@ -1,5 +1,7 @@
 
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:dl_accounting/Configuration/TypoScript/Extlist/BillPositions.ts">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:dl_accounting/Configuration/TypoScript/Extlist/BillPositionsPrint.ts">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:dl_accounting/Configuration/TypoScript/Extlist/Bill.ts">
 
 plugin.tx_dlaccounting {
 	view {
@@ -13,3 +15,5 @@ plugin.tx_dlaccounting {
 }
 
 config.tx_extbase.persistence.classes.Tx_Extbase_Domain_Model_FrontendUser.mapping.recordType >
+
+page.includeCSS.accounting = typo3conf/ext/dl_accounting/Resources/Public/CSS/Accounting.css
