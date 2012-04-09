@@ -114,12 +114,26 @@ plugin.tx_dlaccounting.settings.extlist.billPositions {
 			fieldIdentifier = description
 			columnIdentifier = description
 			label = Beschreibung
+
+			renderObj = COA
+			renderObj {
+				10 = TEXT
+				10 {
+					data = field:description
+					br = 1
+				}
+			}
 		}
 
 		50 {
 			fieldIdentifier = amount
 			columnIdentifier = amount
 			label = Betrag
+
+			renderObj = TEXT
+			renderObj {
+				dataWrap = {field:amount} €
+			}
 		}
 
 		60 {
@@ -132,7 +146,7 @@ plugin.tx_dlaccounting.settings.extlist.billPositions {
 			renderObj {
 				10 = TEXT
 				10 {
-                    value = <button class="btn">Bearbeiten</button>
+                    value = <button class="btn"><i class="icon-pencil icon-black"></i></button>
 					typolink.parameter.data = TSFE:id
                     typolink.additionalParams.dataWrap = &tx_dlaccounting_acc[billPosition]={field:positionUid}&tx_dlaccounting_acc[action]=edit&tx_dlaccounting_acc[controller]=BillPosition
 				}
@@ -142,7 +156,7 @@ plugin.tx_dlaccounting.settings.extlist.billPositions {
 
 				20 = TEXT
 				20 {
-					value = <button class="btn btn-danger">Löschen</button>
+					value = <button class="btn btn-danger"><i class="icon-trash icon-white"></i></button>
 					typolink.parameter.data = TSFE:id
 					typolink.additionalParams.dataWrap = &tx_dlaccounting_acc[billPosition]={field:positionUid}&tx_dlaccounting_acc[action]=delete&tx_dlaccounting_acc[controller]=BillPosition
 				}
@@ -163,7 +177,7 @@ plugin.tx_dlaccounting.settings.extlist.billPositions {
 				aggregateDataIdentifier = sum
 				renderObj = TEXT
 				renderObj.dataWrap (
-					&sum;: <b>{field:sum}</b>
+					&#x03A3;: <b>{field:sum} €</b>
 				)
 			}
 		}

@@ -22,6 +22,8 @@
 			<label index="tx_dlaccounting_domain_model_billposition.bill">bill</label>
 			<label index="tx_dlaccounting_domain_model_billposition.accountCode">accountCode</label>
 			<label index="tx_dlaccounting_domain_model_billposition.costtype">costType</label>
+			<label index="tx_dlaccounting_domain_model_billposition.travelCosts">Travel Costs</label>
+
 			<label index="tx_dlaccounting_domain_model_accountcode">AccountCode</label>
 			<label index="tx_dlaccounting_domain_model_accountcode.title">title</label>
 			<label index="tx_dlaccounting_domain_model_accountcode.code">code</label>
@@ -50,6 +52,7 @@
             <label index="tx_dlaccounting_domain_model_bankaccount.account_no">Kontonummer</label>
             <label index="tx_dlaccounting_domain_model_bankaccount.bank_code">BLZ</label>
             <label index="tx_dlaccounting_domain_model_bankaccount.user">Benutzer</label>
+
             <label index="tx_dlaccounting_domain_model_billposition">BillPosition</label>
             <label index="tx_dlaccounting_domain_model_billposition.date">Datum</label>
             <label index="tx_dlaccounting_domain_model_billposition.amount">Betrag</label>
@@ -57,6 +60,8 @@
             <label index="tx_dlaccounting_domain_model_billposition.bill">Abrechnung</label>
             <label index="tx_dlaccounting_domain_model_billposition.accountCode">Kostenart</label>
             <label index="tx_dlaccounting_domain_model_billposition.costType">Kostenstelle</label>
+            <label index="tx_dlaccounting_domain_model_billposition.travelCosts">Fahrtkosten</label>
+
             <label index="tx_dlaccounting_domain_model_accountcode">AccountCode</label>
             <label index="tx_dlaccounting_domain_model_accountcode.title">title</label>
             <label index="tx_dlaccounting_domain_model_accountcode.code">code</label>

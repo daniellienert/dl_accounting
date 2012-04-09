@@ -1,0 +1,56 @@
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    line-height: 18px;
+    color: #333;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    color: black;
+    text-rendering: optimizelegibility;
+}
+
+table {
+    border-spacing: 0;
+    border-left: 1px solid black;
+    border-top: 1px solid black;
+    width: 100%;
+}
+
+.table th, .table td {
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    padding: 8px;
+}
+
+.table-bordered td {
+    vertical-align: top;
+}
+
+.signTable {
+    border:0;
+    background-color: #ddd;
+}
+
+.formHeader {
+    border:0;
+}
+
+.signTable td {
+    padding: 60px 10px 5px 10px;
+}
+
+.odd {
+    background-color: #eee;
+}
+
+.even {
+    background-color: white;
+}
+
+.tx-ptextlist-field-amount, .tx-ptextlist-field-accountCodeCode, .tx-ptextlist-field-costTypeType, .tx-ptextlist-field-costTypeJob, .tx-ptextlist-aggregatefield-amount   {
+    text-align: right;
+}

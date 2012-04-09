@@ -86,7 +86,7 @@ plugin.tx_dlaccounting.settings.extlist.billPositionsPrint {
 				aggregateDataIdentifier = sum
 				renderObj = TEXT
 				renderObj.dataWrap (
-					&sum;: <b>{field:sum}</b>
+					<b>{field:sum} €</b>
 				)
 			}
 		}

@@ -7,7 +7,7 @@ Tx_Extbase_Utility_Extension::configurePlugin(
 	$_EXTKEY,
 	'Acc',
 	array(
-		'Bill' => 'list, new, edit, update, delete, selectDepartment, printView, pdfView',
+		'Bill' => 'list, new, edit, update, delete, selectDepartment, printView, downloadPdf',
 		'BankAccount' => 'list, show, new, create, edit, update',
 		'BillPosition' => 'list, show, new, create, edit, update, delete',
 		'AccountCode' => 'list, show, new, create, edit, update, delete',

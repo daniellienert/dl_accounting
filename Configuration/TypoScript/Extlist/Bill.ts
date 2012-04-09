@@ -94,7 +94,7 @@ plugin.tx_dlaccounting.settings.extlist.bill {
 			renderObj {
 				10 = TEXT
 				10 {
-                    value = <button class="btn">Bearbeiten</button>
+                    value = <button class="btn"><i class="icon-pencil icon-black"></i></button>
 					typolink.parameter.data = TSFE:id
                     typolink.additionalParams.dataWrap = &tx_dlaccounting_acc[bill]={field:billUid}&tx_dlaccounting_acc[action]=edit&tx_dlaccounting_acc[controller]=Bill
 				}
@@ -104,7 +104,7 @@ plugin.tx_dlaccounting.settings.extlist.bill {
 
 				20 = TEXT
 				20 {
-					value = <button class="btn btn-danger">Löschen</button>
+					value = <button class="btn btn-danger"><i class="icon-trash icon-white"></i></button>
 					typolink.parameter.data = TSFE:id
 					typolink.additionalParams.dataWrap = &tx_dlaccounting_acc[bill]={field:billUid}&tx_dlaccounting_acc[action]=delete&tx_dlaccounting_acc[controller]=Bill
 				}

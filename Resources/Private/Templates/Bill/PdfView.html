@@ -1,0 +1,91 @@
+{namespace extlist=Tx_PtExtlist_ViewHelpers}
+{namespace dompdf=Tx_PtDompdf_ViewHelpers}
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+
+		<f:for each="{includeCSS}" as="csssFilePath">
+        	<link rel="stylesheet" type="text/css" href="{csssFilePath}" />
+		</f:for>
+    </head>
+
+    <body>
+
+		<div class="row-fluid" style="text-align: center">
+			<h1>
+				Abrechnung verauslagter Kosten - Veranstaltungen {currentYear}
+			</h1>
+		</div>
+
+		<br/>
+
+		<div class="row-fluid" style="text-align: center">
+			Deine Auslagen müssen spätestens 4 Wochen nachdem sie entstanden sind im Diözesanbüro zur Auszahlung vorliegen. Später eintreffende Abrechnungen können nicht mehr
+			ausbezahlt werden. Die Ausstellung einer Spendenbescheinigung ist jedoch noch möglich.
+		</div>
+
+		<br/>
+
+		<table class="formHeader">
+			<tr>
+				<td>
+					<h2 style="text-decoration:underline;">{bankAccount.lastName}, {bankAccount.firstName}</h2>
+					<small>Name, Vorname</small>
+				</td>
+				<td style="text-align: right">
+					<h2 style="text-decoration:underline;">{bill.department.title}</h2>
+					<small>Funktion</small>
+				</td>
+			</tr>
+		</table>
+
+		<br/>
+
+		<div class="billPositions">
+			<table class="table table-bordered table-striped tx-ptextlist-list tx-ptextlist-list-standard" id="tx-ptextlist-list-{config.listConfiguration.listIdentifier}">
+				<thead>
+					<f:render partial="{config.listConfiguration.headerPartial}" arguments="{listHeader:listHeader, listCaptions:listCaptions}" />
+				</thead>
+				<tbody>
+					<f:render partial="{config.listConfiguration.bodyPartial}" arguments="{listData:listData}" />
+					<f:render partial="{config.listConfiguration.aggregateRowsPartial}" arguments="{aggregateRows:aggregateRows}" />
+				</tbody>
+			</table>
+		</div>
+
+		<br />
+
+		<div class="row-fluid">
+			<div class="span11 offset1">
+				<h3>Ich beantrage die Überweisung der Kosten auf das angegebene Konto</h3>
+				<h3>Konto: {bankAccount.accountNo}</h3>
+				<h3>BLZ: {bankAccount.bankCode}</h3>
+			</div>
+		</div>
+
+		<br />
+
+		<table class="signTable">
+			<tr>
+				<td>
+					sachlich richtig
+				</td>
+				<td style="text-align: center">
+					rechnerisch richtig
+				</td>
+				<td style="text-align: right">
+					angewiesen
+				</td>
+			</tr>
+		</table>
+
+        <dompdf:staticText position="bottom-right">
+            Seite {PAGE_NUM} von {PAGE_COUNT}
+        </dompdf:staticText>
+
+    </body>
+</html>

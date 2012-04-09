@@ -3,7 +3,22 @@
 <script>
 	$(function() {
 		$( "#date" ).datepicker();
+		setFormModeByAccountCode($('#accountCode').val());
+
+		$('#accountCode').change(function () {
+			setFormModeByAccountCode($('#accountCode').val());
+		});
 	});
+
+	function setFormModeByAccountCode(accountCode) {
+		if (accountCode == {settings.specialAccountCodes.travelCosts}) {
+			$('#amount').fadeOut();
+			$('#travelCosts').fadeIn();
+		} else {
+			$('#amount').fadeIn();
+			$('#travelCosts').fadeOut();
+		}
+	}
 
 	jQuery(function($){
 		$.datepicker.regional['de'] = {
@@ -62,7 +77,21 @@
 		</div>
 	</div>
 
-	<div class="control-group">
+
+	<div class="control-group" id="travelCosts" stlye="display:none">
+		<label class="control-label" for="amount"><f:translate key="tx_dlaccounting_domain_model_billposition.travelCosts" /></label>
+
+		<div class="controls">
+			<div class="input-append">
+				<f:form.textfield property="travelCostKilometers" />
+				<span class="add-on">Km</span>
+			</div>
+			<f:form.select property="travelCostCarPassengers" options="{settings.travelCosts.passengerFees}"/>
+		</div>
+	</div>
+
+
+	<div class="control-group" id="amount">
 		<label class="control-label" for="amount"><f:translate key="tx_dlaccounting_domain_model_billposition.amount" /></label>
 
 		<div class="controls">

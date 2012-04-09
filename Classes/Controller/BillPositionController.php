@@ -162,6 +162,7 @@ class Tx_DlAccounting_Controller_BillPositionController extends Tx_DlAccounting_
 			$this->redirect('list', 'bill');
 		}
 
+		$billPosition->calculate();
 		$this->billPositionRepository->update($billPosition);
 		$this->flashMessageContainer->add('Der Eintrag wurde aktualisiert.');
 
@@ -182,6 +183,7 @@ class Tx_DlAccounting_Controller_BillPositionController extends Tx_DlAccounting_
 			$this->redirect('list', 'bill');
 		}
 
+		$billPosition->calculate();
 		$this->billPositionRepository->remove($billPosition);
 		$this->flashMessageContainer->add('Der Eintrag wurde gelöscht.');
 		$this->redirect('edit', 'Bill', NULL, array('bill' => $billPosition->getBill()));

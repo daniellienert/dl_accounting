@@ -6,3 +6,14 @@ optgroup {
     border-bottom: 1px solid #ccc;
     margin-top: 5px;
 }
+
+/*
+.tx-ptextlist-aggregaterow td {
+    background-color: #ccc !important;
+}
+*/
+
+.tx-ptextlist-field-cmd, .tx-ptextlist-field-sum,
+.tx-ptextlist-field-amount, .tx-ptextlist-aggregatefield-amount {
+    text-align: right !important;
+}

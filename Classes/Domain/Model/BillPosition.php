@@ -75,12 +75,58 @@ class Tx_DlAccounting_Domain_Model_BillPosition extends Tx_Extbase_DomainObject_
 	 */
 	protected $costType;
 
+
+	/**
+	 * @var integer
+	 */
+	protected $travelCostKilometers;
+
+
+	/**
+	 * @var integer
+	 */
+	protected $travelCostCarPassengers;
+
+
+	/**
+	 * @var array
+	 */
+	protected $settings;
+
+
+	/**
+	 * @param Tx_Extbase_Configuration_ConfigurationManagerInterface $configurationManager
+	 * @return void
+	 */
+	public function injectConfigurationManager(Tx_Extbase_Configuration_ConfigurationManagerInterface $configurationManager) {
+		$this->settings = $configurationManager->getConfiguration(Tx_Extbase_Configuration_ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS);
+	}
+
 	/**
 	 * __construct
 	 *
 	 * @return void
 	 */
 	public function __construct() {
+	}
+
+
+	/**
+	 * Calculate the amount and set additional description
+	 */
+	public function calculate() {
+		if($this->accountCode->getUid() == $this->settings['specialAccountCodes']['travelCosts']) {
+			$travelCostsPerKilometer = $this->settings['travelCosts']['centPerKm'];
+
+			$costPerKm =  ($travelCostsPerKilometer * $this->travelCostKilometers) / 100;
+			$extraPerPassenger = ($this->travelCostCarPassengers * $this->travelCostKilometers) / 100;
+
+			$this->setAmount($costPerKm + $extraPerPassenger);
+
+			if($this->travelCostCarPassengers > 0) $passengengers =  ' / ' .$this->travelCostCarPassengers . ' Mitfahrer';
+			$costCalculationdescription =  '(' . $this->travelCostKilometers . 'Km x ' . ($travelCostsPerKilometer + $this->travelCostCarPassengers) . ' Cent'.$passengengers.')';
+			$this->setDescription($this->getDescription() . "\n" . $costCalculationdescription);
+		}
 	}
 
 
@@ -197,6 +243,34 @@ class Tx_DlAccounting_Domain_Model_BillPosition extends Tx_Extbase_DomainObject_
 	 */
 	public function setCostType(Tx_DlAccounting_Domain_Model_CostType $costType) {
 		$this->costType = $costType;
+	}
+
+	/**
+	 * @param int $travelCostCarPassengers
+	 */
+	public function setTravelCostCarPassengers($travelCostCarPassengers) {
+		$this->travelCostCarPassengers = $travelCostCarPassengers;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getTravelCostCarPassengers() {
+		return $this->travelCostCarPassengers;
+	}
+
+	/**
+	 * @param int $travelCostKilometers
+	 */
+	public function setTravelCostKilometers($travelCostKilometers) {
+		$this->travelCostKilometers = $travelCostKilometers;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getTravelCostKilometers() {
+		return $this->travelCostKilometers;
 	}
 
 }

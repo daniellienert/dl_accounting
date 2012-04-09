@@ -9,9 +9,51 @@ plugin.tx_dlaccounting {
 		partialRootPath = {$plugin.tx_dlaccounting.view.partialRootPath}
 		layoutRootPath = {$plugin.tx_dlaccounting.view.layoutRootPath}
 	}
+
 	persistence {
 		storagePid = {$plugin.tx_dlaccounting.persistence.storagePid}
 	}
+
+	settings {
+		travelCosts {
+
+			centPerKm = 18
+
+			passengerFees {
+				0 = Kein Mitfahrer
+				2 = 1 Mitfahrer
+				4 = 2 Mitfahrer
+				6 = 3 Mitfahrer
+				8 = 4 Mitfahrer
+				10 = 5 Mitfahrer
+				12 = 6 Mitfahrer
+				14 = 7 Mitfahrer
+			}
+		}
+
+		specialAccountCodes {
+			travelCosts = 6
+		}
+
+		controller.Bill.downloadPdf {
+			view = Tx_PtDompdf_View_PdfView
+			template = EXT:dl_accounting/Resources/Private/Templates/Bill/PdfView.html
+		}
+	}
+
+}
+
+plugin.tx_ptdompdf.settings {
+
+	dompdfSourcePath = EXT:pt_dompdf/Classes/dompdf
+	paperSize = a4
+	paperOrientation = landscape
+
+	includeCSS {
+//		bootstrap = EXT:bp/Resources/Public/Bootstrap/css/bootstrap.css
+		pdf = EXT:dl_accounting/Resources/Public/CSS/PDF.css
+	}
+
 }
 
 config.tx_extbase.persistence.classes.Tx_Extbase_Domain_Model_FrontendUser.mapping.recordType >
