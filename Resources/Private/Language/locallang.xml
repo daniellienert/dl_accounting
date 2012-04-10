@@ -15,6 +15,8 @@
 			<label index="tx_dlaccounting_domain_model_bankaccount.account_no">accountNo</label>
 			<label index="tx_dlaccounting_domain_model_bankaccount.bank_code">bankCode</label>
 			<label index="tx_dlaccounting_domain_model_bankaccount.user">user</label>
+			<label index="tx_dlaccounting_domain_model_bankaccount.paymentComment">Payment Comment</label>
+
 			<label index="tx_dlaccounting_domain_model_billposition">BillPosition</label>
 			<label index="tx_dlaccounting_domain_model_billposition.date">date</label>
 			<label index="tx_dlaccounting_domain_model_billposition.amount">amount</label>
@@ -52,6 +54,7 @@
             <label index="tx_dlaccounting_domain_model_bankaccount.account_no">Kontonummer</label>
             <label index="tx_dlaccounting_domain_model_bankaccount.bank_code">BLZ</label>
             <label index="tx_dlaccounting_domain_model_bankaccount.user">Benutzer</label>
+            <label index="tx_dlaccounting_domain_model_bankaccount.paymentComment">Kommentar</label>
 
             <label index="tx_dlaccounting_domain_model_billposition">BillPosition</label>
             <label index="tx_dlaccounting_domain_model_billposition.date">Datum</label>

@@ -17,3 +17,11 @@ optgroup {
 .tx-ptextlist-field-amount, .tx-ptextlist-aggregatefield-amount {
     text-align: right !important;
 }
+
+.tx-ptextlist-field-amount {
+    width: 70px;
+}
+
+.tx-ptextlist-field-description {
+    min-width: 100px;
+}

@@ -56,8 +56,7 @@
 		<label class="control-label" for="costType"><f:translate key="tx_dlaccounting_domain_model_billposition.costType" /></label>
 
 		<div class="controls">
-			<f:form.hidden property="costType"/>
-			<select name="tx_dlaccounting_acc[billPosition][costType]">
+			<select name="tx_dlaccounting_acc[{billPositionObjectName}][costType]">
 				<f:for each="{costTypes}" as="costType">
 					<ptx:ifValueChanges value="{costType.department.uid}">
 						<optgroup label="{costType.department.title}"></optgroup>

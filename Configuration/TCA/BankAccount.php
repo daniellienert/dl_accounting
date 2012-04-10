@@ -6,10 +6,10 @@ if (!defined ('TYPO3_MODE')) {
 $TCA['tx_dlaccounting_domain_model_bankaccount'] = array(
 	'ctrl' => $TCA['tx_dlaccounting_domain_model_bankaccount']['ctrl'],
 	'interface' => array(
-		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, first_name, last_name, city, account_no, bank_code, user',
+		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, first_name, last_name, city, account_no, bank_code, user, payment_comment',
 	),
 	'types' => array(
-		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, first_name, last_name, city, account_no, bank_code, user,--div--;LLL:EXT:cms/locallang_ttc.xml:tabs.access,starttime, endtime'),
+		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, first_name, last_name, city, account_no, bank_code, user, payment_comment--div--;LLL:EXT:cms/locallang_ttc.xml:tabs.access,starttime, endtime'),
 	),
 	'palettes' => array(
 		'1' => array('showitem' => ''),
@@ -153,6 +153,15 @@ $TCA['tx_dlaccounting_domain_model_bankaccount'] = array(
 					'showPossibleLocalizationRecords' => 1,
 					'showAllLocalizationLink' => 1
 				),
+			),
+		),
+		'payment_comment' => array(
+			'exclude' => 0,
+			'label' => 'LLL:EXT:dl_accounting/Resources/Private/Language/locallang_db.xml:tx_dlaccounting_domain_model_bankaccount.paymentComment',
+			'config' => array(
+				'type' => 'input',
+				'size' => 50,
+				'eval' => 'trim'
 			),
 		),
 	),

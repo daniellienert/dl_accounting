@@ -75,6 +75,28 @@ class Tx_DlAccounting_Domain_Model_BankAccount extends Tx_Extbase_DomainObject_A
 	 */
 	protected $user;
 
+
+	/**
+	 * @var integer
+	 */
+	protected $paymentComment;
+
+
+	/**
+	 * @var array
+	 */
+	protected $settings;
+
+
+	/**
+	 * @param Tx_Extbase_Configuration_ConfigurationManagerInterface $configurationManager
+	 * @return void
+	 */
+	public function injectConfigurationManager(Tx_Extbase_Configuration_ConfigurationManagerInterface $configurationManager) {
+		$this->settings = $configurationManager->getConfiguration(Tx_Extbase_Configuration_ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS);
+	}
+
+
 	/**
 	 * Returns the firstName
 	 *
@@ -189,5 +211,28 @@ class Tx_DlAccounting_Domain_Model_BankAccount extends Tx_Extbase_DomainObject_A
 		$this->user = $user;
 	}
 
+	/**
+	 * @param int $paymentComment
+	 */
+	public function setPaymentComment($paymentComment) {
+		$this->paymentComment = $paymentComment;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getPaymentComment() {
+		return $this->paymentComment;
+	}
+
+
+	/**
+	 * return string
+	 */
+	public function getPaymentCommentText() {
+		if(array_key_exists($this->paymentComment, $this->settings['paymentComments'])) {
+			return $this->settings['paymentComments'][$this->paymentComment];
+		}
+	}
 }
 ?>

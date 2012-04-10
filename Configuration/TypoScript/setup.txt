@@ -35,6 +35,14 @@ plugin.tx_dlaccounting {
 			travelCosts = 6
 		}
 
+
+		paymentComments {
+			10 = Her mit
+			20 = Spends
+			30 = Mach damit was du willst :)
+		}
+
+
 		controller.Bill.downloadPdf {
 			view = Tx_PtDompdf_View_PdfView
 			template = EXT:dl_accounting/Resources/Private/Templates/Bill/PdfView.html

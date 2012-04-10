@@ -25,6 +25,10 @@ plugin.tx_dlaccounting.settings.extlist.bill {
 			field = uid
 		}
 
+		billUidFormated {
+			special = LPad(bill.uid,5, '0')
+		}
+
 		date {
 			table = bill
 			field = crdate
@@ -48,8 +52,8 @@ plugin.tx_dlaccounting.settings.extlist.bill {
 	columns {
 
 		10 {
-			fieldIdentifier = billUid
-			columnIdentifier = billUid
+			fieldIdentifier = billUidFormated
+			columnIdentifier = billUidFormated
 			label = #
 		}
 
@@ -81,6 +85,11 @@ plugin.tx_dlaccounting.settings.extlist.bill {
 			fieldIdentifier = sum
 			columnIdentifier = sum
 			label = Summe
+
+			renderObj = TEXT
+			renderObj {
+				dataWrap = {field:sum} €
+			}
 		}
 
 

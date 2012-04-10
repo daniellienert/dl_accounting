@@ -50,6 +50,7 @@ class Tx_DlAccounting_Domain_Model_BillPosition extends Tx_Extbase_DomainObject_
 	/**
 	 * description
 	 *
+	 * @validate notEmpty
 	 * @var string
 	 */
 	protected $description;
@@ -67,6 +68,7 @@ class Tx_DlAccounting_Domain_Model_BillPosition extends Tx_Extbase_DomainObject_
 	 * @var Tx_DlAccounting_Domain_Model_AccountCode
 	 */
 	protected $accountCode;
+
 
 	/**
 	 * costType

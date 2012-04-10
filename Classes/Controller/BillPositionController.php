@@ -119,6 +119,7 @@ class Tx_DlAccounting_Controller_BillPositionController extends Tx_DlAccounting_
 	/**
 	 * action create
 	 *
+	 * @dontverifyrequesthash
 	 * @param $newBillPosition
 	 * @return void
 	 */
@@ -153,6 +154,7 @@ class Tx_DlAccounting_Controller_BillPositionController extends Tx_DlAccounting_
 	/**
 	 * action update
 	 *
+	 * @dontverifyrequesthash
 	 * @param $billPosition
 	 * @return void
 	 */

@@ -40,3 +40,12 @@
 		<f:form.textfield property="bankCode" id="bankCode" />
 	</div>
 </div>
+
+
+<div class="control-group">
+	<label class="control-label" for="paymentComment"><f:translate key="tx_dlaccounting_domain_model_bankaccount.paymentComment" /></label>
+
+	<div class="controls">
+		<f:form.select property="paymentComment" id="paymentComment" options="{settings.paymentComments}"/>
+	</div>
+</div>

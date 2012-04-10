@@ -55,6 +55,7 @@ CREATE TABLE tx_dlaccounting_domain_model_bankaccount (
 	account_no varchar(255) DEFAULT '' NOT NULL,
 	bank_code varchar(255) DEFAULT '' NOT NULL,
 	user int(11) unsigned DEFAULT '0',
+	payment_comment text,
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,
