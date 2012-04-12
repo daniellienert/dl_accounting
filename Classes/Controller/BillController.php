@@ -260,5 +260,30 @@ class Tx_DlAccounting_Controller_BillController extends Tx_DlAccounting_Controll
 		$this->flashMessageContainer->add('Die Abrechnung wurde gelöscht	.');
 		$this->redirect('list');
 	}
+
+
+	/**
+	 * Sorting action used to change sorting of a list
+	 *
+	 * @return string Rendered sorting action
+	 */
+	public function sortAction() {
+
+		// EVIL HACK FOLLOWING:
+		if(array_key_exists('billPositions', t3lib_div::_GET('tx_dlaccounting_acc'))) {
+			$listContext = Tx_PtExtlist_ExtlistContext_ExtlistContextFactory::getContextByCustomConfiguration($this->settings['extlist']['billPositions'], 'billPositions');
+			$forwardTo = 'edit';
+		} else {
+			$listContext = Tx_PtExtlist_ExtlistContext_ExtlistContextFactory::getContextByCustomConfiguration($this->settings['extlist']['bill'], 'bill');
+			$forwardTo = 'list';
+		}
+
+		$listContext->getDataBackend()->resetListDataCache();
+		$listContext->getDataBackend()->getSorter()->reset();
+
+		if($forwardTo == 'list') {
+			$this->forward($forwardTo);
+		}
+	}
 }
 ?>

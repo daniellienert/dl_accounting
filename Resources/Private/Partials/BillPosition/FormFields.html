@@ -62,7 +62,7 @@
 						<optgroup label="{costType.department.title}"></optgroup>
 					</ptx:ifValueChanges>
 
-					<option {f:if(condition:'{billPosition.costType.uid} == {costType.uid}', then:'selected="selected"')} label="{costType.title}">{costType.uid}</option>
+					<option {f:if(condition:'{billPosition.costType.uid} == {costType.uid}', then:'selected="selected"')} label="{costType.title}" value="{costType.uid}">{costType.title}</option>
 				</f:for>
 			</select>
 		</div>

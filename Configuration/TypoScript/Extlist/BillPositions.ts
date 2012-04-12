@@ -95,12 +95,14 @@ plugin.tx_dlaccounting.settings.extlist.billPositions {
                 }
                 stdWrap.date = d.m.Y
             }
+            isSortable = 0
 		}
 
 		20 {
 			fieldIdentifier = costTypeTitle
 			columnIdentifier = costType
 			label = Kostenstelle
+			isSortable = 0
 		}
 
 
@@ -108,6 +110,7 @@ plugin.tx_dlaccounting.settings.extlist.billPositions {
 			fieldIdentifier = accountCodeTitle
 			columnIdentifier = accountCode
 			label = Kostenart
+			isSortable = 0
 		}
 
 		40 {
@@ -123,6 +126,8 @@ plugin.tx_dlaccounting.settings.extlist.billPositions {
 					br = 1
 				}
 			}
+
+			isSortable = 0
 		}
 
 		50 {
@@ -134,6 +139,8 @@ plugin.tx_dlaccounting.settings.extlist.billPositions {
 			renderObj {
 				dataWrap = {field:amount} €
 			}
+
+			isSortable = 0
 		}
 
 		60 {
@@ -161,6 +168,8 @@ plugin.tx_dlaccounting.settings.extlist.billPositions {
 					typolink.additionalParams.dataWrap = &tx_dlaccounting_acc[billPosition]={field:positionUid}&tx_dlaccounting_acc[action]=delete&tx_dlaccounting_acc[controller]=BillPosition
 				}
 			}
+
+			isSortable = 0
 		}
 	}
 
