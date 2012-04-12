@@ -130,7 +130,7 @@ class Tx_DlAccounting_Controller_BillPositionController extends Tx_DlAccounting_
 		}
 
 		$this->billPositionRepository->add($newBillPosition);
-		$this->flashMessageContainer->add('Your new BillPosition was created.');
+		$this->flashMessageContainer->add('Ein neuer Eintrag wurde hinzugefügt.');
 		$this->redirect('edit', 'Bill', NULL, array('bill' => $newBillPosition->getBill()));
 	}
 

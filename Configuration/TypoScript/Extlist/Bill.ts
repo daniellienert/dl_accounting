@@ -13,7 +13,14 @@ plugin.tx_dlaccounting.settings.extlist.bill {
 			INNER JOIN tx_dlaccounting_domain_model_department department ON bill.department = department.uid
 		)
 
-		// baseWhereClause ()
+		baseWhereClause = COA
+		baseWhereClause {
+			10 = TEXT
+			10 {
+				data = TSFE:fe_user|user|uid
+                wrap = user = |
+			}
+		}
 
 		baseGroupByClause = bill.uid
 	}
@@ -45,6 +52,11 @@ plugin.tx_dlaccounting.settings.extlist.bill {
 				FROM tx_dlaccounting_domain_model_billposition positions
 				WHERE positions.bill = bill.uid AND positions.deleted = 0
 			)
+		}
+
+		user {
+			table = bill
+			field = user
 		}
 
 	}

@@ -238,7 +238,7 @@ class Tx_DlAccounting_Controller_BillController extends Tx_DlAccounting_Controll
 		}
 
 		$this->billRepository->update($bill);
-		$this->flashMessageContainer->add('Your Bill was updated.');
+		$this->flashMessageContainer->add('Die Abrechnung wurde gespeichert.');
 		$this->redirect('list');
 	}
 
@@ -257,7 +257,7 @@ class Tx_DlAccounting_Controller_BillController extends Tx_DlAccounting_Controll
 		}
 
 		$this->billRepository->remove($bill);
-		$this->flashMessageContainer->add('Your Bill was removed.');
+		$this->flashMessageContainer->add('Die Abrechnung wurde gelöscht	.');
 		$this->redirect('list');
 	}
 }

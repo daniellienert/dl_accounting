@@ -84,7 +84,7 @@ class Tx_DlAccounting_Controller_BankAccountController extends Tx_DlAccounting_C
 		}
 
 		$this->bankAccountRepository->update($bankAccount);
-		$this->flashMessageContainer->add('Your BankAccount was updated.');
+		$this->flashMessageContainer->add('Deine Bankdaten wurden gespeichert.');
 		$this->forward('edit','Bill',NULL,array('bill' => $bill));
 	}
 
