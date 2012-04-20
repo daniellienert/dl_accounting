@@ -41,37 +41,37 @@
 		</languageKey>
 
         <languageKey index="de" type="array">
-            <label index="tx_dlaccounting_domain_model_bill">Bill</label>
-            <label index="tx_dlaccounting_domain_model_bill.user">User</label>
+            <label index="tx_dlaccounting_domain_model_bill">Rechnung</label>
+            <label index="tx_dlaccounting_domain_model_bill.user">Benutzer</label>
 
-            <label index="tx_dlaccounting_domain_model_bankaccount">Bank Account</label>
-            <label index="tx_dlaccounting_domain_model_bankaccount.first_name">First Name</label>
-            <label index="tx_dlaccounting_domain_model_bankaccount.last_name">Last Name</label>
-            <label index="tx_dlaccounting_domain_model_bankaccount.city">City</label>
-            <label index="tx_dlaccounting_domain_model_bankaccount.account_no">Account No</label>
-            <label index="tx_dlaccounting_domain_model_bankaccount.bank_code">Bank Code</label>
-            <label index="tx_dlaccounting_domain_model_bankaccount.user">User</label>
+            <label index="tx_dlaccounting_domain_model_bankaccount">Konto</label>
+            <label index="tx_dlaccounting_domain_model_bankaccount.first_name">Vorname</label>
+            <label index="tx_dlaccounting_domain_model_bankaccount.last_name">Nachname</label>
+            <label index="tx_dlaccounting_domain_model_bankaccount.city">Stadt</label>
+            <label index="tx_dlaccounting_domain_model_bankaccount.account_no">Kontonummer</label>
+            <label index="tx_dlaccounting_domain_model_bankaccount.bank_code">BLZ</label>
+            <label index="tx_dlaccounting_domain_model_bankaccount.user">Benutzer</label>
 
-            <label index="tx_dlaccounting_domain_model_billposition">Bill Position</label>
-            <label index="tx_dlaccounting_domain_model_billposition.date">Date</label>
-            <label index="tx_dlaccounting_domain_model_billposition.amount">Amount</label>
-            <label index="tx_dlaccounting_domain_model_billposition.description">Description</label>
-            <label index="tx_dlaccounting_domain_model_billposition.bill">Bill</label>
-            <label index="tx_dlaccounting_domain_model_billposition.account_code">Nuchungskonto</label>
-            <label index="tx_dlaccounting_domain_model_billposition.cost_type">Cost Type</label>
+            <label index="tx_dlaccounting_domain_model_billposition">Posten</label>
+            <label index="tx_dlaccounting_domain_model_billposition.date">Datum</label>
+            <label index="tx_dlaccounting_domain_model_billposition.amount">Betrag</label>
+            <label index="tx_dlaccounting_domain_model_billposition.description">Beschreibung</label>
+            <label index="tx_dlaccounting_domain_model_billposition.bill">Abrechnung</label>
+            <label index="tx_dlaccounting_domain_model_billposition.account_code">Buchungskonto</label>
+            <label index="tx_dlaccounting_domain_model_billposition.cost_type">Kostentyp</label>
 
             <label index="tx_dlaccounting_domain_model_accountcode">Buchungskonto</label>
-            <label index="tx_dlaccounting_domain_model_accountcode.title">Title</label>
-            <label index="tx_dlaccounting_domain_model_accountcode.code">Code</label>
+            <label index="tx_dlaccounting_domain_model_accountcode.title">Name</label>
+            <label index="tx_dlaccounting_domain_model_accountcode.code">Nummer</label>
 
             <label index="tx_dlaccounting_domain_model_department">Abteilung</label>
-            <label index="tx_dlaccounting_domain_model_department.title">Title</label>
+            <label index="tx_dlaccounting_domain_model_department.title">Name</label>
 
             <label index="tx_dlaccounting_domain_model_costtype">Kostentyp</label>
             <label index="tx_dlaccounting_domain_model_costtype.title">Name</label>
-            <label index="tx_dlaccounting_domain_model_costtype.cost_type">Cost Type</label>
-            <label index="tx_dlaccounting_domain_model_costtype.job_number">Job Number</label>
-            <label index="tx_dlaccounting_domain_model_costtype.department">Department</label>
+            <label index="tx_dlaccounting_domain_model_costtype.cost_type">Kostentyp</label>
+            <label index="tx_dlaccounting_domain_model_costtype.job_number">Auftragsnummer</label>
+            <label index="tx_dlaccounting_domain_model_costtype.department">Abteilung</label>
 
         </languageKey>
 	</data>

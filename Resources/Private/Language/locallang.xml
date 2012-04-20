@@ -65,16 +65,16 @@
             <label index="tx_dlaccounting_domain_model_billposition.costType">Kostenstelle</label>
             <label index="tx_dlaccounting_domain_model_billposition.travelCosts">Fahrtkosten</label>
 
-            <label index="tx_dlaccounting_domain_model_accountcode">AccountCode</label>
-            <label index="tx_dlaccounting_domain_model_accountcode.title">title</label>
-            <label index="tx_dlaccounting_domain_model_accountcode.code">code</label>
+            <label index="tx_dlaccounting_domain_model_accountcode">Konto</label>
+            <label index="tx_dlaccounting_domain_model_accountcode.title">Name</label>
+            <label index="tx_dlaccounting_domain_model_accountcode.code">Nummer</label>
             <label index="tx_dlaccounting_domain_model_department">Abteilung</label>
-            <label index="tx_dlaccounting_domain_model_department.title">title</label>
-            <label index="tx_dlaccounting_domain_model_costtype">CostType</label>
-            <label index="tx_dlaccounting_domain_model_costtype.title">title</label>
+            <label index="tx_dlaccounting_domain_model_department.title">Name</label>
+            <label index="tx_dlaccounting_domain_model_costtype">Kostentyp</label>
+            <label index="tx_dlaccounting_domain_model_costtype.title">Name</label>
             <label index="tx_dlaccounting_domain_model_costtype.costType">Kostenstelle</label>
-            <label index="tx_dlaccounting_domain_model_costtype.jobNumber">jobNumber</label>
-            <label index="tx_dlaccounting_domain_model_costtype.department">department</label>
+            <label index="tx_dlaccounting_domain_model_costtype.jobNumber">Auftragsnummer</label>
+            <label index="tx_dlaccounting_domain_model_costtype.department">Abteilung</label>
 
             <label index="tx_dlaccounting_controller_bill.editBill">Abrechnung bearbeiten</label>
 
