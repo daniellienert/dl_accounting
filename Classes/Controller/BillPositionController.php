@@ -97,11 +97,10 @@ class Tx_DlAccounting_Controller_BillPositionController extends Tx_DlAccounting_
 
 	/**
 	 * action new
-	 *
+     * 
+     * @dontvalidate
 	 * @param $bill Tx_DlAccounting_Domain_Model_Bill
 	 * @param $newBillPosition Tx_DlAccounting_Domain_Model_BillPosition
-	 *
-	 * @dontvalidate $newBillPosition
 	 * @return void
 	 */
 	public function newAction(Tx_DlAccounting_Domain_Model_Bill $bill, Tx_DlAccounting_Domain_Model_BillPosition $newBillPosition = NULL) {
@@ -110,24 +109,43 @@ class Tx_DlAccounting_Controller_BillPositionController extends Tx_DlAccounting_
 			$this->redirect('list', 'bill');
 		}
 
+        if($newBillPosition == NULL) {
+            $newBillPosition = new Tx_DlAccounting_Domain_Model_BillPosition();
+            $newBillPosition->setDate($this->getSessionData('date', new DateTime()));
+            if($this->getSessionData('costType')) $newBillPosition->setCostType($this->getSessionData('costType'));
+        }
+
 		$this->view->assign('accountCodes', $this->accountCodeRepository->findAll());
 		$this->view->assign('costTypes', $this->costTypeRepository->findAll());
 		$this->view->assign('newBillPosition', $newBillPosition);
 		$this->view->assign('bill', $bill);
 	}
 
+
+
+
 	/**
 	 * action create
 	 *
 	 * @dontverifyrequesthash
+     *
 	 * @param $newBillPosition
+     * @dontvalidate
 	 * @return void
 	 */
 	public function createAction(Tx_DlAccounting_Domain_Model_BillPosition $newBillPosition) {
 
-		if(!$this->checkAccessOnBill($newBillPosition->getBill())) {
+        if(!$this->checkAccessOnBill($newBillPosition->getBill())) {
 			$this->redirect('list', 'bill');
 		}
+
+        if($newBillPosition->getDescription() == '') {
+            $this->flashMessageContainer->add('Bitte gib eine Beschreibung deines Eintrags an.', 'Beschreibung fehlt.', t3lib_FlashMessage::ERROR);
+            $this->forward('new', NULL, NULL, array('bill' => $newBillPosition->getBill(), 'newBillPosition' => $newBillPosition));
+        }
+
+        $this->storeSessionData('date', $newBillPosition->getDate());
+        $this->storeSessionData('costType', $newBillPosition->getCostType());
 
 		$this->billPositionRepository->add($newBillPosition);
 		$this->flashMessageContainer->add('Ein neuer Eintrag wurde hinzugefügt.');
@@ -138,6 +156,7 @@ class Tx_DlAccounting_Controller_BillPositionController extends Tx_DlAccounting_
 	 * action edit
 	 *
 	 * @param $billPosition
+     * @dontvalidate
 	 * @return void
 	 */
 	public function editAction(Tx_DlAccounting_Domain_Model_BillPosition $billPosition) {

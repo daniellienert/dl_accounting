@@ -23,6 +23,7 @@ t3lib_extMgm::addStaticFile($_EXTKEY, 'Configuration/TypoScript', 'Accounting mo
 					'dividers2tabs' => TRUE,
 					'versioningWS' => 2,
 					'versioning_followPages' => TRUE,
+					'versioning_followPages' => TRUE,
 					'origUid' => 't3_origuid',
 					'languageField' => 'sys_language_uid',
 					'transOrigPointerField' => 'l10n_parent',
@@ -168,6 +169,7 @@ t3lib_extMgm::addStaticFile($_EXTKEY, 'Configuration/TypoScript', 'Accounting mo
 						'starttime' => 'starttime',
 						'endtime' => 'endtime',
 					),
+					'sortby' => 'title',
 					'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY) . 'Configuration/TCA/CostType.php',
 					'iconfile' => t3lib_extMgm::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tx_dlaccounting_domain_model_costtype.gif'
 				),

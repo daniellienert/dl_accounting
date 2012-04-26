@@ -56,5 +56,32 @@ class Tx_DlAccounting_Controller_AbstractController extends Tx_PtExtbase_Control
 			return FALSE;
 		}
 	}
+
+
+    /**
+     * @param $key
+     * @param null $initialValue
+     * @return mixed
+     */
+    protected function getSessionData($key, $initialValue = NULL) {
+        $data = Tx_PtExtbase_State_Session_Storage_SessionAdapter::getInstance()->read('dl_accounting');
+
+        if(is_array($data) && array_key_exists($key, $data)) {
+            return $data[$key];
+        } else {
+            return $initialValue;
+        }
+    }
+
+
+    /**
+     * @param $key
+     * @param $value
+     */
+    protected function storeSessionData($key, $value) {
+        $data = Tx_PtExtbase_State_Session_Storage_SessionAdapter::getInstance()->read('dl_accounting');
+        $data[$key] = $value;
+        Tx_PtExtbase_State_Session_Storage_SessionAdapter::getInstance()->store('dl_accounting', $data);
+    }
 }
 ?>

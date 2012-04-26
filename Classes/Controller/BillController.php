@@ -157,6 +157,9 @@ class Tx_DlAccounting_Controller_BillController extends Tx_DlAccounting_Controll
 
 
 
+	/**
+	 * @param Tx_DlAccounting_Domain_Model_Bill $bill
+	 */
 	public function printViewAction(Tx_DlAccounting_Domain_Model_Bill $bill) {
 		if(!$this->checkAccessOnBill($bill)) {
 			$this->forward('list');
@@ -171,26 +174,31 @@ class Tx_DlAccounting_Controller_BillController extends Tx_DlAccounting_Controll
 
 		$this->view->assign('bill', $bill);
 
+		$this->view->assign('currentDate', date('d.m.Y'));
 		$this->view->assign('currentYear', date('Y'));
 	}
 
 
 
+	/**
+	 * @param Tx_DlAccounting_Domain_Model_Bill $bill
+	 */
 	public function downloadPdfAction(Tx_DlAccounting_Domain_Model_Bill $bill) {
-			if(!$this->checkAccessOnBill($bill)) {
-				$this->forward('list');
-			}
+		if (!$this->checkAccessOnBill($bill)) {
+			$this->forward('list');
+		}
 
-			$bankAccount = $this->bankAccountRepository->findOneByUser($this->getCurrentUser());
-			$this->view->assign('bankAccount', $bankAccount);
+		$bankAccount = $this->bankAccountRepository->findOneByUser($this->getCurrentUser());
+		$this->view->assign('bankAccount', $bankAccount);
 
-			$positionList = Tx_PtExtlist_ExtlistContext_ExtlistContextFactory::getContextByCustomConfiguration($this->settings['extlist']['billPositionsPrint'], 'billPositions');
-			$positionList->getFilterBoxCollection()->getFilterboxByFilterboxIdentifier('bill')->getFilterByFilterIdentifier('billFilter')->setFilterValue($bill->getUid())->init();
-			$this->view->assignMultiple($positionList->getAllListTemplateParts());
+		$positionList = Tx_PtExtlist_ExtlistContext_ExtlistContextFactory::getContextByCustomConfiguration($this->settings['extlist']['billPositionsPrint'], 'billPositions');
+		$positionList->getFilterBoxCollection()->getFilterboxByFilterboxIdentifier('bill')->getFilterByFilterIdentifier('billFilter')->setFilterValue($bill->getUid())->init();
+		$this->view->assignMultiple($positionList->getAllListTemplateParts());
 
-			$this->view->assign('bill', $bill);
+		$this->view->assign('bill', $bill);
 
-			$this->view->assign('currentYear', date('Y'));
+		$this->view->assign('currentDate', date('d.m.Y'));
+		$this->view->assign('currentYear', date('Y'));
 	}
 
 

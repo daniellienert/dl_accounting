@@ -23,7 +23,7 @@ table {
 .table th, .table td {
     border-right: 1px solid black;
     border-bottom: 1px solid black;
-    padding: 8px;
+    padding: 4px;
 }
 
 .table-bordered td {
