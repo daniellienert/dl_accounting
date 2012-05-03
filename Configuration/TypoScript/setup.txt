@@ -18,16 +18,17 @@ plugin.tx_dlaccounting {
 		travelCosts {
 
 			centPerKm = 18
+			centPerExtraPassenger = 2
 
 			passengerFees {
 				0 = Kein Mitfahrer
-				2 = 1 Mitfahrer
-				4 = 2 Mitfahrer
-				6 = 3 Mitfahrer
-				8 = 4 Mitfahrer
-				10 = 5 Mitfahrer
-				12 = 6 Mitfahrer
-				14 = 7 Mitfahrer
+				1 = 1 Mitfahrer
+				2 = 2 Mitfahrer
+				3 = 3 Mitfahrer
+				4 = 4 Mitfahrer
+				5 = 5 Mitfahrer
+				6 = 6 Mitfahrer
+				7 = 7 Mitfahrer
 			}
 		}
 

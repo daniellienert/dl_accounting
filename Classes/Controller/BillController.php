@@ -225,7 +225,10 @@ class Tx_DlAccounting_Controller_BillController extends Tx_DlAccounting_Controll
 		$this->view->assign('bankAccount', $bankAccount);
 
 		$positionList = Tx_PtExtlist_ExtlistContext_ExtlistContextFactory::getContextByCustomConfiguration($this->settings['extlist']['billPositions'], 'billPositions');
-		$positionList->getFilterBoxCollection()->getFilterboxByFilterboxIdentifier('bill')->getFilterByFilterIdentifier('billFilter')->setFilterValue($bill->getUid())->init();
+		$positionList->getFilterBoxCollection()
+            ->getFilterboxByFilterboxIdentifier('bill')->getFilterByFilterIdentifier('billFilter')
+            ->reset()
+            ->setFilterValue($bill->getUid())->init();
 		$this->view->assignMultiple($positionList->getAllListTemplateParts());
 
 		$this->view->assign('bill', $bill);

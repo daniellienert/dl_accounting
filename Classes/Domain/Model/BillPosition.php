@@ -118,14 +118,15 @@ class Tx_DlAccounting_Domain_Model_BillPosition extends Tx_Extbase_DomainObject_
 	public function calculate() {
 		if($this->accountCode->getUid() == $this->settings['specialAccountCodes']['travelCosts']) {
 			$travelCostsPerKilometer = $this->settings['travelCosts']['centPerKm'];
+            $travelCostsPerExtraPassenger = $this->settings['travelCosts']['centPerExtraPassenger'];
 
 			$costPerKm =  ($travelCostsPerKilometer * $this->travelCostKilometers) / 100;
-			$extraPerPassenger = ($this->travelCostCarPassengers * $this->travelCostKilometers) / 100;
+			$extraPerPassenger = ($this->travelCostCarPassengers * $this->travelCostKilometers * $travelCostsPerExtraPassenger) / 100;
 
 			$this->setAmount($costPerKm + $extraPerPassenger);
 
 			if($this->travelCostCarPassengers > 0) $passengengers =  ' / ' .$this->travelCostCarPassengers . ' Mitfahrer';
-			$costCalculationdescription =  '(' . $this->travelCostKilometers . 'Km x ' . ($travelCostsPerKilometer + $this->travelCostCarPassengers) . ' Cent'.$passengengers.')';
+			$costCalculationdescription =  '(' . $this->travelCostKilometers . ' Km x ' . ($travelCostsPerKilometer + $this->travelCostCarPassengers * $travelCostsPerExtraPassenger) . ' Cent'.$passengengers.')';
 			$this->setDescription($this->getDescription() . "\n" . $costCalculationdescription);
 		}
 	}
@@ -159,6 +160,7 @@ class Tx_DlAccounting_Domain_Model_BillPosition extends Tx_Extbase_DomainObject_
 		return $this->amount;
 	}
 
+
 	/**
 	 * Sets the amount
 	 *
@@ -166,6 +168,7 @@ class Tx_DlAccounting_Domain_Model_BillPosition extends Tx_Extbase_DomainObject_
 	 * @return void
 	 */
 	public function setAmount($amount) {
+        if(stristr($amount, ',')) $amount = str_replace(',', '.', $amount);
 		$this->amount = $amount;
 	}
 

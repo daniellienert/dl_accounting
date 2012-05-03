@@ -116,7 +116,7 @@ class Tx_DlAccounting_Controller_BillPositionController extends Tx_DlAccounting_
         }
 
 		$this->view->assign('accountCodes', $this->accountCodeRepository->findAll());
-		$this->view->assign('costTypes', $this->costTypeRepository->findAll());
+		$this->view->assign('costTypes', $this->costTypeRepository->findCostTypePrioritisedByDepartment($bill->getDepartment()));
 		$this->view->assign('newBillPosition', $newBillPosition);
 		$this->view->assign('bill', $bill);
 	}
@@ -146,6 +146,8 @@ class Tx_DlAccounting_Controller_BillPositionController extends Tx_DlAccounting_
 
         $this->storeSessionData('date', $newBillPosition->getDate());
         $this->storeSessionData('costType', $newBillPosition->getCostType());
+
+        $newBillPosition->calculate();
 
 		$this->billPositionRepository->add($newBillPosition);
 		$this->flashMessageContainer->add('Ein neuer Eintrag wurde hinzugefügt.');

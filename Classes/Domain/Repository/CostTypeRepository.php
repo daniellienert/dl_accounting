@@ -33,5 +33,26 @@
  */
 class Tx_DlAccounting_Domain_Repository_CostTypeRepository extends Tx_Extbase_Persistence_Repository {
 
+    /**
+     * @param Tx_DlAccounting_Domain_Model_Department $department
+     * @return array
+     */
+    public function findCostTypePrioritisedByDepartment(Tx_DlAccounting_Domain_Model_Department $department) {
+
+        $prioritisedCostTypes = array();
+        $costTypes = $this->findAll();
+
+        foreach($costTypes as $costType) { /** @var Tx_DlAccounting_Domain_Model_CostType $costType */
+            if($costType->getDepartment() == $department) $prioritisedCostTypes[] = $costType;
+            unset($costType);
+        }
+
+        foreach($costTypes as $costType) { /** @var Tx_DlAccounting_Domain_Model_CostType $costType */
+            $prioritisedCostTypes[] = $costType;
+        }
+
+        return $prioritisedCostTypes;
+    }
+
 }
 ?>
