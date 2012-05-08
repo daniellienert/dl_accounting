@@ -100,6 +100,7 @@ plugin.tx_dlaccounting.settings.extlist.billPositionsPrint {
 					filterIdentifier = billFilter
 					label =
 					fieldIdentifier = bill
+					exactMatch = 1
 				}
 			}
 		}
