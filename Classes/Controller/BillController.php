@@ -153,7 +153,7 @@ class Tx_DlAccounting_Controller_BillController extends Tx_DlAccounting_Controll
 		$departments = $this->departmentRepository->findAll();
 
 		if($departments->count() == 1) {
-			$this->forward('new', NULL, NULL, array('department' => $department);
+			$this->forward('new', NULL, NULL, array('department' => $department));
 		}
 		
 		$this->view->assign('departments', $departments);
