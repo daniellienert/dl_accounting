@@ -42,6 +42,8 @@ class Tx_DlAccounting_Domain_Repository_CostTypeRepository extends Tx_Extbase_Pe
         $prioritisedCostTypes = array();
         $costTypes = $this->findAll();
 
+		$otherCostTypes = array();
+		
         foreach($costTypes as $key => $costType) { /** @var Tx_DlAccounting_Domain_Model_CostType $costType */
             if($costType->getDepartment() == $department) {
 				$prioritisedCostTypes[] = $costType;
