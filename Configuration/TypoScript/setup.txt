@@ -39,8 +39,9 @@ plugin.tx_dlaccounting {
 
 		paymentComments {
 			10 = Ich beantrage die Überweisung der Kosten auf das angegebene Konto.
-            20 = Ich verzichte auf meinen Erstattungsanspruch.
-            30 = Ich verzichte auf meinen Erstattungsanspruch und bitte um eine Spendenquittung.
+            		20 = Ich verzichte auf meinen Erstattungsanspruch.
+            		30 = Ich verzichte auf meinen Erstattungsanspruch und bitte um eine Spendenquittung.
+            		40 = Ich verzichte auf meinen Erstattungsanspruch zugunsten einer "Zustiftung“ zur dpsg-Unterstiftung DV Freiburg.
 		}
 
 
