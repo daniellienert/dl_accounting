@@ -17,7 +17,7 @@ plugin.tx_dlaccounting {
 	settings {
 		travelCosts {
 
-			centPerKm = 18
+			centPerKm = 23
 			centPerExtraPassenger = 2
 
 			passengerFees {

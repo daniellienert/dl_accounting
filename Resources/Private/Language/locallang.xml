@@ -50,9 +50,12 @@
             <label index="tx_dlaccounting_domain_model_bankaccount">Konto</label>
             <label index="tx_dlaccounting_domain_model_bankaccount.first_name">Vorname</label>
             <label index="tx_dlaccounting_domain_model_bankaccount.last_name">Nachname</label>
-            <label index="tx_dlaccounting_domain_model_bankaccount.city">Ort</label>
-            <label index="tx_dlaccounting_domain_model_bankaccount.account_no">Kontonummer</label>
-            <label index="tx_dlaccounting_domain_model_bankaccount.bank_code">BLZ</label>
+            <label
+            index="tx_dlaccounting_domain_model_bankaccount.city">Strasse, PLZ, Ort</label>
+            <label index="tx_dlaccounting_domain_model_bankaccount.account_no">IBAN
+            (22 Stellen)</label>
+            <label index="tx_dlaccounting_domain_model_bankaccount.bank_code">BIC
+            (11 Stellen)</label>
             <label index="tx_dlaccounting_domain_model_bankaccount.user">Benutzer</label>
             <label index="tx_dlaccounting_domain_model_bankaccount.paymentComment">Kommentar</label>
 
