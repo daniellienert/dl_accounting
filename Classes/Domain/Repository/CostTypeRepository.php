@@ -33,6 +33,10 @@
  */
 class Tx_DlAccounting_Domain_Repository_CostTypeRepository extends Tx_Extbase_Persistence_Repository {
 
+    protected $defaultOrderings = array(
+        'department' => Tx_Extbase_Persistence_QueryInterface::ORDER_ASCENDING,
+    );
+    
     /**
      * @param Tx_DlAccounting_Domain_Model_Department $department
      * @return array
