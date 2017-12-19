@@ -31,12 +31,12 @@
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
-class Tx_DlAccounting_Domain_Model_Bill extends Tx_Extbase_DomainObject_AbstractEntity {
+class Tx_DlAccounting_Domain_Model_Bill extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 
 	/**
 	 * user
 	 *
-	 * @var Tx_Extbase_Domain_Model_FrontendUser
+	 * @var \TYPO3\CMS\Extbase\Domain\Model\FrontendUser
 	 */
 	protected $user;
 
@@ -50,7 +50,7 @@ class Tx_DlAccounting_Domain_Model_Bill extends Tx_Extbase_DomainObject_Abstract
 	/**
 	 * Returns the user
 	 *
-	 * @return Tx_Extbase_Domain_Model_FrontendUser $user
+	 * @return \TYPO3\CMS\Extbase\Domain\Model\FrontendUser $user
 	 */
 	public function getUser() {
 		return $this->user;
@@ -59,10 +59,10 @@ class Tx_DlAccounting_Domain_Model_Bill extends Tx_Extbase_DomainObject_Abstract
 	/**
 	 * Sets the user
 	 *
-	 * @param Tx_Extbase_Domain_Model_FrontendUser $user
+	 * @param \TYPO3\CMS\Extbase\Domain\Model\FrontendUser $user
 	 * @return void
 	 */
-	public function setUser(Tx_Extbase_Domain_Model_FrontendUser $user) {
+	public function setUser(\TYPO3\CMS\Extbase\Domain\Model\FrontendUser $user) {
 		$this->user = $user;
 	}
 

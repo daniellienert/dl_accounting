@@ -24,14 +24,6 @@
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-/**
- *
- *
- * @package dl_accounting
- * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
- *
- */
-class Tx_DlAccounting_Domain_Repository_AccountCodeRepository extends Tx_Extbase_Persistence_Repository {
 
+class Tx_DlAccounting_Domain_Repository_AccountCodeRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 }
-?>

@@ -31,7 +31,7 @@
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
-class Tx_DlAccounting_Controller_CostTypeController extends Tx_Extbase_MVC_Controller_ActionController {
+class Tx_DlAccounting_Controller_CostTypeController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 
 	/**
 	 * action list
@@ -57,7 +57,7 @@ class Tx_DlAccounting_Controller_CostTypeController extends Tx_Extbase_MVC_Contr
 	 * action new
 	 *
 	 * @param $newCostType
-	 * @dontvalidate $newCostType
+	 * @ignorevalidation $newCostType
 	 * @return void
 	 */
 	public function newAction(Tx_DlAccounting_Domain_Model_CostType $newCostType = NULL) {
@@ -72,7 +72,7 @@ class Tx_DlAccounting_Controller_CostTypeController extends Tx_Extbase_MVC_Contr
 	 */
 	public function createAction(Tx_DlAccounting_Domain_Model_CostType $newCostType) {
 		$this->costTypeRepository->add($newCostType);
-		$this->flashMessageContainer->add('Your new CostType was created.');
+		$this->addFlashMessage('Your new CostType was created.');
 		$this->redirect('list');
 	}
 
@@ -94,7 +94,7 @@ class Tx_DlAccounting_Controller_CostTypeController extends Tx_Extbase_MVC_Contr
 	 */
 	public function updateAction(Tx_DlAccounting_Domain_Model_CostType $costType) {
 		$this->costTypeRepository->update($costType);
-		$this->flashMessageContainer->add('Your CostType was updated.');
+		$this->addFlashMessage('Your CostType was updated.');
 		$this->redirect('list');
 	}
 
@@ -106,7 +106,7 @@ class Tx_DlAccounting_Controller_CostTypeController extends Tx_Extbase_MVC_Contr
 	 */
 	public function deleteAction(Tx_DlAccounting_Domain_Model_CostType $costType) {
 		$this->costTypeRepository->remove($costType);
-		$this->flashMessageContainer->add('Your CostType was removed.');
+		$this->addFlashMessage('Your CostType was removed.');
 		$this->redirect('list');
 	}
 

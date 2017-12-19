@@ -4,7 +4,7 @@
  *  Copyright notice
  *
  *  (c) 2012 Daniel Lienert <daniel@lienert.cc>, Daniel Lienert
- *  
+ *
  *  All rights reserved
  *
  *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -24,6 +24,9 @@
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use TYPO3\CMS\Extbase\Persistence\QueryInterface;
+use TYPO3\CMS\Extbase\Persistence\Repository;
+
 /**
  *
  *
@@ -31,32 +34,36 @@
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
-class Tx_DlAccounting_Domain_Repository_CostTypeRepository extends Tx_Extbase_Persistence_Repository {
+class Tx_DlAccounting_Domain_Repository_CostTypeRepository extends Repository
+{
 
     protected $defaultOrderings = array(
-        'department' => Tx_Extbase_Persistence_QueryInterface::ORDER_ASCENDING,
+        'department' => QueryInterface::ORDER_ASCENDING,
     );
-    
+
     /**
      * @param Tx_DlAccounting_Domain_Model_Department $department
      * @return array
      */
-    public function findCostTypePrioritisedByDepartment(Tx_DlAccounting_Domain_Model_Department $department) {
+    public function findCostTypePrioritisedByDepartment(Tx_DlAccounting_Domain_Model_Department $department)
+    {
 
         $prioritisedCostTypes = array();
         $costTypes = $this->findAll();
 
-		$otherCostTypes = array();
-		
-        foreach($costTypes as $key => $costType) { /** @var Tx_DlAccounting_Domain_Model_CostType $costType */
-            if($costType->getDepartment() == $department) {
-				$prioritisedCostTypes[] = $costType;
-			} else {
-				$otherCostTypes[] = $costType;
+        $otherCostTypes = array();
+
+        foreach ($costTypes as $key => $costType) {
+            /** @var Tx_DlAccounting_Domain_Model_CostType $costType */
+            if ($costType->getDepartment() == $department) {
+                $prioritisedCostTypes[] = $costType;
+            } else {
+                $otherCostTypes[] = $costType;
             }
         }
 
-        foreach($otherCostTypes as $costType) { /** @var Tx_DlAccounting_Domain_Model_CostType $costType */
+        foreach ($otherCostTypes as $costType) {
+            /** @var Tx_DlAccounting_Domain_Model_CostType $costType */
             $prioritisedCostTypes[] = $costType;
         }
 
@@ -64,4 +71,3 @@ class Tx_DlAccounting_Domain_Repository_CostTypeRepository extends Tx_Extbase_Pe
     }
 
 }
-?>

@@ -4,7 +4,7 @@
  *  Copyright notice
  *
  *  (c) 2012 Daniel Lienert <daniel@lienert.cc>, Daniel Lienert
- *  
+ *
  *  All rights reserved
  *
  *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -24,66 +24,66 @@
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-/**
- *
- *
- * @package dl_accounting
- * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
- *
- */
-class Tx_DlAccounting_Domain_Model_AccountCode extends Tx_Extbase_DomainObject_AbstractEntity {
 
-	/**
-	 * title
-	 *
-	 * @var string
-	 */
-	protected $title;
+class Tx_DlAccounting_Domain_Model_AccountCode extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
+{
 
-	/**
-	 * code
-	 *
-	 * @var string
-	 */
-	protected $code;
+    /**
+     * title
+     *
+     * @var string
+     */
+    protected $title;
 
-	/**
-	 * Returns the title
-	 *
-	 * @return string $title
-	 */
-	public function getTitle() {
-		return $this->title;
-	}
+    /**
+     * code
+     *
+     * @var string
+     */
+    protected $code;
 
-	/**
-	 * Sets the title
-	 *
-	 * @param string $title
-	 * @return void
-	 */
-	public function setTitle($title) {
-		$this->title = $title;
-	}
+    /**
+     * Returns the title
+     *
+     * @return string $title
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
 
-	/**
-	 * Returns the code
-	 *
-	 * @return string $code
-	 */
-	public function getCode() {
-		return $this->code;
-	}
+    /**
+     * Sets the title
+     *
+     * @param string $title
+     * @return void
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    }
 
-	/**
-	 * Sets the code
-	 *
-	 * @param string $code
-	 * @return void
-	 */
-	public function setCode($code) {
-		$this->code = $code;
-	}
+    /**
+     * Returns the code
+     *
+     * @return string $code
+     */
+    public function getCode()
+    {
+        return $this->code;
+    }
+
+    /**
+     * Sets the code
+     *
+     * @param string $code
+     * @return void
+     */
+    public function setCode($code)
+    {
+        $this->code = $code;
+    }
 
 }
+
 ?>

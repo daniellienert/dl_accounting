@@ -4,7 +4,7 @@
  *  Copyright notice
  *
  *  (c) 2012 Daniel Lienert <daniel@lienert.cc>, Daniel Lienert
- *  
+ *
  *  All rights reserved
  *
  *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -24,83 +24,78 @@
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-/**
- *
- *
- * @package dl_accounting
- * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
- *
- */
-class Tx_DlAccounting_Controller_BankAccountController extends Tx_DlAccounting_Controller_AbstractController {
+class Tx_DlAccounting_Controller_BankAccountController extends Tx_DlAccounting_Controller_AbstractController
+{
 
-	/**
-	 * bankAccountRepository
-	 *
-	 * @var Tx_DlAccounting_Domain_Repository_BankAccountRepository
-	 */
-	protected $bankAccountRepository;
+    /**
+     * bankAccountRepository
+     *
+     * @var Tx_DlAccounting_Domain_Repository_BankAccountRepository
+     */
+    protected $bankAccountRepository;
 
-	/**
-	 * injectBankAccountRepository
-	 *
-	 * @param Tx_DlAccounting_Domain_Repository_BankAccountRepository $bankAccountRepository
-	 * @return void
-	 */
-	public function injectBankAccountRepository(Tx_DlAccounting_Domain_Repository_BankAccountRepository $bankAccountRepository) {
-		$this->bankAccountRepository = $bankAccountRepository;
-	}
+    /**
+     * injectBankAccountRepository
+     *
+     * @param Tx_DlAccounting_Domain_Repository_BankAccountRepository $bankAccountRepository
+     * @return void
+     */
+    public function injectBankAccountRepository(Tx_DlAccounting_Domain_Repository_BankAccountRepository $bankAccountRepository)
+    {
+        $this->bankAccountRepository = $bankAccountRepository;
+    }
 
 
-	/**
-	 * action edit
-	 *
-	 * @param $bankAccount Tx_DlAccounting_Domain_Model_BankAccount
-	 * @param $bill Tx_DlAccounting_Domain_Model_Bill
-	 * @return void
-	 */
-	public function editAction(Tx_DlAccounting_Domain_Model_BankAccount $bankAccount, Tx_DlAccounting_Domain_Model_Bill $bill) {
+    /**
+     * action edit
+     *
+     * @param $bankAccount Tx_DlAccounting_Domain_Model_BankAccount
+     * @param $bill Tx_DlAccounting_Domain_Model_Bill
+     * @return void
+     */
+    public function editAction(Tx_DlAccounting_Domain_Model_BankAccount $bankAccount, Tx_DlAccounting_Domain_Model_Bill $bill)
+    {
 
-		if(!$this->checkAccessOnBankAccount($bankAccount)) {
-			$this->redirect('list', 'bill');
-		}
+        if (!$this->checkAccessOnBankAccount($bankAccount)) {
+            $this->redirect('list', 'bill');
+        }
 
-		$this->view->assign('bankAccount', $bankAccount);
-		$this->view->assign('bill', $bill);
-	}
-
-
-
-	/**
-	 * action update
-	 *
-	 * @param $bankAccount Tx_DlAccounting_Domain_Model_BankAccount
-	 * @param $bill Tx_DlAccounting_Domain_Model_Bill
-	 * @return void
-	 */
-	public function updateAction(Tx_DlAccounting_Domain_Model_BankAccount $bankAccount, Tx_DlAccounting_Domain_Model_Bill $bill) {
-
-		if(!$this->checkAccessOnBankAccount($bankAccount)) {
-			$this->redirect('list', 'bill');
-		}
-
-		$this->bankAccountRepository->update($bankAccount);
-		$this->flashMessageContainer->add('Deine Bankdaten wurden gespeichert.');
-		$this->forward('edit','Bill',NULL,array('bill' => $bill));
-	}
+        $this->view->assign('bankAccount', $bankAccount);
+        $this->view->assign('bill', $bill);
+    }
 
 
+    /**
+     * action update
+     *
+     * @param $bankAccount Tx_DlAccounting_Domain_Model_BankAccount
+     * @param $bill Tx_DlAccounting_Domain_Model_Bill
+     * @return void
+     */
+    public function updateAction(Tx_DlAccounting_Domain_Model_BankAccount $bankAccount, Tx_DlAccounting_Domain_Model_Bill $bill)
+    {
 
-	/**
-	 * @param Tx_DlAccounting_Domain_Model_BankAccount $bankAccount
-	 */
-	protected function checkAccessOnBankAccount(Tx_DlAccounting_Domain_Model_BankAccount $bankAccount) {
-		if($bankAccount->getUser()->getUid() == (int) $GLOBALS['TSFE']->fe_user->user['uid']) {
-			return true;
-		} else {
-			$this->flashMessageContainer->add('Dies sind nicht deine Kontodaten! Finger weg!', 'Fehlende Berechtigung', t3lib_FlashMessage::ERROR);
-			return FALSE;
-		}
-	}
+        if (!$this->checkAccessOnBankAccount($bankAccount)) {
+            $this->redirect('list', 'bill');
+        }
 
+        $this->bankAccountRepository->update($bankAccount);
+        $this->addFlashMessage('Deine Bankdaten wurden gespeichert.');
+        $this->forward('edit', 'Bill', NULL, array('bill' => $bill));
+    }
+
+
+    /**
+     * @param Tx_DlAccounting_Domain_Model_BankAccount $bankAccount
+     * @return bool
+     */
+    protected function checkAccessOnBankAccount(Tx_DlAccounting_Domain_Model_BankAccount $bankAccount)
+    {
+        if ($bankAccount->getUser()->getUid() == (int) $GLOBALS['TSFE']->fe_user->user['uid']) {
+            return true;
+        } else {
+            $this->addFlashMessage('Dies sind nicht deine Kontodaten! Finger weg!', 'Fehlende Berechtigung', \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR);
+            return FALSE;
+        }
+    }
 }
-?>

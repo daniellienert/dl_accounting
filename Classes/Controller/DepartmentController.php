@@ -4,7 +4,7 @@
  *  Copyright notice
  *
  *  (c) 2012 Daniel Lienert <daniel@lienert.cc>, Daniel Lienert
- *  
+ *
  *  All rights reserved
  *
  *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -24,91 +24,95 @@
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-/**
- *
- *
- * @package dl_accounting
- * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
- *
- */
-class Tx_DlAccounting_Controller_DepartmentController extends Tx_Extbase_MVC_Controller_ActionController {
+use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
-	/**
-	 * action list
-	 *
-	 * @return void
-	 */
-	public function listAction() {
-		$departments = $this->departmentRepository->findAll();
-		$this->view->assign('departments', $departments);
-	}
+class Tx_DlAccounting_Controller_DepartmentController extends ActionController
+{
 
-	/**
-	 * action show
-	 *
-	 * @param $department
-	 * @return void
-	 */
-	public function showAction(Tx_DlAccounting_Domain_Model_Department $department) {
-		$this->view->assign('department', $department);
-	}
+    /**
+     * action list
+     *
+     * @return void
+     */
+    public function listAction()
+    {
+        $departments = $this->departmentRepository->findAll();
+        $this->view->assign('departments', $departments);
+    }
 
-	/**
-	 * action new
-	 *
-	 * @param $newDepartment
-	 * @dontvalidate $newDepartment
-	 * @return void
-	 */
-	public function newAction(Tx_DlAccounting_Domain_Model_Department $newDepartment = NULL) {
-		$this->view->assign('newDepartment', $newDepartment);
-	}
+    /**
+     * action show
+     *
+     * @param $department
+     * @return void
+     */
+    public function showAction(Tx_DlAccounting_Domain_Model_Department $department)
+    {
+        $this->view->assign('department', $department);
+    }
 
-	/**
-	 * action create
-	 *
-	 * @param $newDepartment
-	 * @return void
-	 */
-	public function createAction(Tx_DlAccounting_Domain_Model_Department $newDepartment) {
-		$this->departmentRepository->add($newDepartment);
-		$this->flashMessageContainer->add('Your new Department was created.');
-		$this->redirect('list');
-	}
+    /**
+     * action new
+     *
+     * @param $newDepartment
+     * @ignorevalidation $newDepartment
+     * @return void
+     */
+    public function newAction(Tx_DlAccounting_Domain_Model_Department $newDepartment = NULL)
+    {
+        $this->view->assign('newDepartment', $newDepartment);
+    }
 
-	/**
-	 * action edit
-	 *
-	 * @param $department
-	 * @return void
-	 */
-	public function editAction(Tx_DlAccounting_Domain_Model_Department $department) {
-		$this->view->assign('department', $department);
-	}
+    /**
+     * action create
+     *
+     * @param $newDepartment
+     * @return void
+     */
+    public function createAction(Tx_DlAccounting_Domain_Model_Department $newDepartment)
+    {
+        $this->departmentRepository->add($newDepartment);
+        $this->addFlashMessage('Your new Department was created.');
+        $this->redirect('list');
+    }
 
-	/**
-	 * action update
-	 *
-	 * @param $department
-	 * @return void
-	 */
-	public function updateAction(Tx_DlAccounting_Domain_Model_Department $department) {
-		$this->departmentRepository->update($department);
-		$this->flashMessageContainer->add('Your Department was updated.');
-		$this->redirect('list');
-	}
+    /**
+     * action edit
+     *
+     * @param $department
+     * @return void
+     */
+    public function editAction(Tx_DlAccounting_Domain_Model_Department $department)
+    {
+        $this->view->assign('department', $department);
+    }
 
-	/**
-	 * action delete
-	 *
-	 * @param $department
-	 * @return void
-	 */
-	public function deleteAction(Tx_DlAccounting_Domain_Model_Department $department) {
-		$this->departmentRepository->remove($department);
-		$this->flashMessageContainer->add('Your Department was removed.');
-		$this->redirect('list');
-	}
+    /**
+     * action update
+     *
+     * @param $department
+     * @return void
+     */
+    public function updateAction(Tx_DlAccounting_Domain_Model_Department $department)
+    {
+        $this->departmentRepository->update($department);
+        $this->addFlashMessage('Your Department was updated.');
+        $this->redirect('list');
+    }
+
+    /**
+     * action delete
+     *
+     * @param $department
+     * @return void
+     */
+    public function deleteAction(Tx_DlAccounting_Domain_Model_Department $department)
+    {
+        $this->departmentRepository->remove($department);
+        $this->addFlashMessage('Your Department was removed.');
+        $this->redirect('list');
+    }
 
 }
+
 ?>

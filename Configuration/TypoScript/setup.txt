@@ -66,6 +66,6 @@ plugin.tx_ptdompdf.settings {
 
 }
 
-config.tx_extbase.persistence.classes.Tx_Extbase_Domain_Model_FrontendUser.mapping.recordType >
+config.tx_extbase.persistence.classes.\TYPO3\CMS\Extbase\Domain\Model\FrontendUser.mapping.recordType >
 
 page.includeCSS.accounting = typo3conf/ext/dl_accounting/Resources/Public/CSS/Accounting.css

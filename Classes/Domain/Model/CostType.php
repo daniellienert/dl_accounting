@@ -31,7 +31,7 @@
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
-class Tx_DlAccounting_Domain_Model_CostType extends Tx_Extbase_DomainObject_AbstractEntity {
+class Tx_DlAccounting_Domain_Model_CostType extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 
 	/**
 	 * title

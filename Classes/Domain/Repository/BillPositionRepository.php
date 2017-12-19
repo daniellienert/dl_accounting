@@ -31,7 +31,7 @@
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
-class Tx_DlAccounting_Domain_Repository_BillPositionRepository extends Tx_Extbase_Persistence_Repository {
+class Tx_DlAccounting_Domain_Repository_BillPositionRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 
 }
 ?>

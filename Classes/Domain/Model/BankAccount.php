@@ -1,10 +1,12 @@
 <?php
 
+use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
+
 /***************************************************************
  *  Copyright notice
  *
  *  (c) 2012 Daniel Lienert <daniel@lienert.cc>, Daniel Lienert
- *  
+ *
  *  All rights reserved
  *
  *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -24,215 +26,224 @@
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-/**
- *
- *
- * @package dl_accounting
- * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
- *
- */
-class Tx_DlAccounting_Domain_Model_BankAccount extends Tx_Extbase_DomainObject_AbstractEntity {
+class Tx_DlAccounting_Domain_Model_BankAccount extends AbstractEntity
+{
 
-	/**
-	 * firstName
-	 *
-	 * @var string
-	 */
-	protected $firstName;
+    /**
+     * firstName
+     *
+     * @var string
+     */
+    protected $firstName;
 
-	/**
-	 * lastName
-	 *
-	 * @var string
-	 */
-	protected $lastName;
+    /**
+     * lastName
+     *
+     * @var string
+     */
+    protected $lastName;
 
-	/**
-	 * city
-	 *
-	 * @var string
-	 */
-	protected $city;
+    /**
+     * city
+     *
+     * @var string
+     */
+    protected $city;
 
-	/**
-	 * accountNo
-	 *
-	 * @var string
-	 */
-	protected $accountNo;
+    /**
+     * accountNo
+     *
+     * @var string
+     */
+    protected $accountNo;
 
-	/**
-	 * bankCode
-	 *
-	 * @var string
-	 */
-	protected $bankCode;
+    /**
+     * bankCode
+     *
+     * @var string
+     */
+    protected $bankCode;
 
-	/**
-	 * user
-	 *
-	 * @var Tx_Extbase_Domain_Model_FrontendUser
-	 */
-	protected $user;
+    /**
+     * user
+     *
+     * @var \TYPO3\CMS\Extbase\Domain\Model\FrontendUser
+     */
+    protected $user;
 
 
-	/**
-	 * @var integer
-	 */
-	protected $paymentComment;
+    /**
+     * @var integer
+     */
+    protected $paymentComment;
 
 
-	/**
-	 * @var array
-	 */
-	protected $settings;
+    /**
+     * @var array
+     */
+    protected $settings;
 
 
-	/**
-	 * @param Tx_Extbase_Configuration_ConfigurationManagerInterface $configurationManager
-	 * @return void
-	 */
-	public function injectConfigurationManager(Tx_Extbase_Configuration_ConfigurationManagerInterface $configurationManager) {
-		$this->settings = $configurationManager->getConfiguration(Tx_Extbase_Configuration_ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS);
-	}
+    /**
+     * @param \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface $configurationManager
+     * @return void
+     */
+    public function injectConfigurationManager(\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface $configurationManager)
+    {
+        $this->settings = $configurationManager->getConfiguration(\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS);
+    }
 
 
-	/**
-	 * Returns the firstName
-	 *
-	 * @return string $firstName
-	 */
-	public function getFirstName() {
-		return $this->firstName;
-	}
+    /**
+     * Returns the firstName
+     *
+     * @return string $firstName
+     */
+    public function getFirstName()
+    {
+        return $this->firstName;
+    }
 
-	/**
-	 * Sets the firstName
-	 *
-	 * @param string $firstName
-	 * @return void
-	 */
-	public function setFirstName($firstName) {
-		$this->firstName = $firstName;
-	}
+    /**
+     * Sets the firstName
+     *
+     * @param string $firstName
+     * @return void
+     */
+    public function setFirstName($firstName)
+    {
+        $this->firstName = $firstName;
+    }
 
-	/**
-	 * Returns the lastName
-	 *
-	 * @return string $lastName
-	 */
-	public function getLastName() {
-		return $this->lastName;
-	}
+    /**
+     * Returns the lastName
+     *
+     * @return string $lastName
+     */
+    public function getLastName()
+    {
+        return $this->lastName;
+    }
 
-	/**
-	 * Sets the lastName
-	 *
-	 * @param string $lastName
-	 * @return void
-	 */
-	public function setLastName($lastName) {
-		$this->lastName = $lastName;
-	}
+    /**
+     * Sets the lastName
+     *
+     * @param string $lastName
+     * @return void
+     */
+    public function setLastName($lastName)
+    {
+        $this->lastName = $lastName;
+    }
 
-	/**
-	 * Returns the city
-	 *
-	 * @return string $city
-	 */
-	public function getCity() {
-		return $this->city;
-	}
+    /**
+     * Returns the city
+     *
+     * @return string $city
+     */
+    public function getCity()
+    {
+        return $this->city;
+    }
 
-	/**
-	 * Sets the city
-	 *
-	 * @param string $city
-	 * @return void
-	 */
-	public function setCity($city) {
-		$this->city = $city;
-	}
+    /**
+     * Sets the city
+     *
+     * @param string $city
+     * @return void
+     */
+    public function setCity($city)
+    {
+        $this->city = $city;
+    }
 
-	/**
-	 * Returns the accountNo
-	 *
-	 * @return string $accountNo
-	 */
-	public function getAccountNo() {
-		return $this->accountNo;
-	}
+    /**
+     * Returns the accountNo
+     *
+     * @return string $accountNo
+     */
+    public function getAccountNo()
+    {
+        return $this->accountNo;
+    }
 
-	/**
-	 * Sets the accountNo
-	 *
-	 * @param string $accountNo
-	 * @return void
-	 */
-	public function setAccountNo($accountNo) {
-		$this->accountNo = $accountNo;
-	}
+    /**
+     * Sets the accountNo
+     *
+     * @param string $accountNo
+     * @return void
+     */
+    public function setAccountNo($accountNo)
+    {
+        $this->accountNo = $accountNo;
+    }
 
-	/**
-	 * Returns the bankCode
-	 *
-	 * @return string $bankCode
-	 */
-	public function getBankCode() {
-		return $this->bankCode;
-	}
+    /**
+     * Returns the bankCode
+     *
+     * @return string $bankCode
+     */
+    public function getBankCode()
+    {
+        return $this->bankCode;
+    }
 
-	/**
-	 * Sets the bankCode
-	 *
-	 * @param string $bankCode
-	 * @return void
-	 */
-	public function setBankCode($bankCode) {
-		$this->bankCode = $bankCode;
-	}
+    /**
+     * Sets the bankCode
+     *
+     * @param string $bankCode
+     * @return void
+     */
+    public function setBankCode($bankCode)
+    {
+        $this->bankCode = $bankCode;
+    }
 
-	/**
-	 * Returns the user
-	 *
-	 * @return Tx_Extbase_Domain_Model_FrontendUser $user
-	 */
-	public function getUser() {
-		return $this->user;
-	}
+    /**
+     * Returns the user
+     *
+     * @return \TYPO3\CMS\Extbase\Domain\Model\FrontendUser $user
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
 
-	/**
-	 * Sets the user
-	 *
-	 * @param Tx_Extbase_Domain_Model_FrontendUser $user
-	 * @return void
-	 */
-	public function setUser(Tx_Extbase_Domain_Model_FrontendUser $user) {
-		$this->user = $user;
-	}
+    /**
+     * Sets the user
+     *
+     * @param \TYPO3\CMS\Extbase\Domain\Model\FrontendUser $user
+     * @return void
+     */
+    public function setUser(\TYPO3\CMS\Extbase\Domain\Model\FrontendUser $user)
+    {
+        $this->user = $user;
+    }
 
-	/**
-	 * @param int $paymentComment
-	 */
-	public function setPaymentComment($paymentComment) {
-		$this->paymentComment = $paymentComment;
-	}
+    /**
+     * @param int $paymentComment
+     */
+    public function setPaymentComment($paymentComment)
+    {
+        $this->paymentComment = $paymentComment;
+    }
 
-	/**
-	 * @return int
-	 */
-	public function getPaymentComment() {
-		return $this->paymentComment;
-	}
+    /**
+     * @return int
+     */
+    public function getPaymentComment()
+    {
+        return $this->paymentComment;
+    }
 
 
-	/**
-	 * return string
-	 */
-	public function getPaymentCommentText() {
-		if(array_key_exists($this->paymentComment, $this->settings['paymentComments'])) {
-			return $this->settings['paymentComments'][$this->paymentComment];
-		}
-	}
+    /**
+     * return string
+     */
+    public function getPaymentCommentText()
+    {
+        if (array_key_exists($this->paymentComment, $this->settings['paymentComments'])) {
+            return $this->settings['paymentComments'][$this->paymentComment];
+        }
+    }
 }
-?>

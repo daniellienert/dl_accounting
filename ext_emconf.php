@@ -11,33 +11,29 @@
 ########################################################################
 
 $EM_CONF[$_EXTKEY] = array(
-	'title' => 'Accounting module',
-	'description' => 'Accounting module for DPSG Freiburg',
-	'category' => 'plugin',
-	'author' => 'Daniel Lienert',
-	'author_email' => 'daniel@lienert.cc',
-	'author_company' => 'Daniel Lienert',
-	'shy' => '',
-	'priority' => '',
-	'module' => '',
-	'state' => 'beta',
-	'internal' => '',
-	'uploadfolder' => '0',
-	'createDirs' => '',
-	'modify_tables' => '',
-	'clearCacheOnLoad' => 0,
-	'lockType' => '',
-	'version' => '',
-	'constraints' => array(
-		'depends' => array(
-			'extbase' => '1.3.0',
-			'fluid' => '1.3.0',
-		),
-		'conflicts' => array(
-		),
-		'suggests' => array(
-		),
-	),
+    'title' => 'Accounting module',
+    'description' => 'Accounting module for DPSG Freiburg',
+    'category' => 'plugin',
+    'author' => 'Daniel Lienert',
+    'author_email' => 'daniel@lienert.cc',
+    'author_company' => 'Daniel Lienert',
+    'shy' => '',
+    'priority' => '',
+    'module' => '',
+    'state' => 'beta',
+    'internal' => '',
+    'uploadfolder' => '0',
+    'createDirs' => '',
+    'modify_tables' => '',
+    'clearCacheOnLoad' => 0,
+    'lockType' => '',
+    'version' => '',
+    'constraints' => array(
+        'depends' => array(
+            'extbase' => '1.3.0',
+            'fluid' => '1.3.0',
+        ),
+        'conflicts' => array(),
+        'suggests' => array(),
+    ),
 );
-
-?>

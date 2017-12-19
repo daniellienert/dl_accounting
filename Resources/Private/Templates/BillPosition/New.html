@@ -1,28 +1,28 @@
 {namespace ptx=Tx_PtExtbase_ViewHelpers}
 
-<f:layout name="Default" />
-
+<f:layout name="Default"/>
 <f:section name="main">
+    <ptx:flashMessages renderMode="div" messageCssClasses="{0: 'alert alert-success', 1: 'alert alert-warning', 2: 'alert alert-error'}"/>
 
-<ptx:flashMessages renderMode="div" messageCssClasses="{0: 'alert alert-success', 1: 'alert alert-warning', 2: 'alert alert-error'}" />
+    <f:render partial="formErrors" arguments="{for: 'newBillPosition'}"/>
 
-<f:render partial="FormErrors" />
+    <f:form class="form-horizontal" method="post" action="create" name="newBillPosition" object="{newBillPosition}">
+        <fieldset>
+            <legend>Neuer Eintrag</legend>
+            <br/>
 
-<f:form class="form-horizontal" method="post" action="create"  name="newBillPosition" object="{newBillPosition}">
+            <f:render partial="BillPosition/FormFields"
+                      arguments="{costTypes:costTypes, accountCodes:accountCodes, billPosition:newBillPosition, billPositionObjectName:'newBillPosition'}"/>
+            <f:form.hidden property="bill" value="{bill}"/>
 
-	<fieldset>
-
-		<legend>Neuer Eintrag</legend>
-		<br />
-
-			<f:render partial="BillPosition/FormFields" arguments="{costTypes:costTypes, accountCodes:accountCodes, billPosition:newBillPosition, billPositionObjectName:'newBillPosition'}"/>
-			<f:form.hidden property="bill" value="{bill}" />
-
-			<div class="form-actions">
-				<f:form.submit class="btn btn-primary" value="{f:translate(key:'tx_dlaccounting.general.save')}" />
-				<button class="btn"><f:link.action action="edit" controller="Bill" arguments="{bill:bill}"><f:translate key="tx_dlaccounting.general.cancel" /></f:link.action></button>
-			</div>
-		</fieldset>
-</f:form>
-
+            <div class="form-actions">
+                <f:form.submit class="btn btn-primary" value="{f:translate(key:'tx_dlaccounting.general.save')}"/>
+                <button class="btn">
+                    <f:link.action action="edit" controller="Bill" arguments="{bill:bill}">
+                        <f:translate key="tx_dlaccounting.general.cancel"/>
+                    </f:link.action>
+                </button>
+            </div>
+        </fieldset>
+    </f:form>
 </f:section>

@@ -1,5 +1,7 @@
 <?php
 
+use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
+
 /***************************************************************
  *  Copyright notice
  *
@@ -24,14 +26,6 @@
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-/**
- *
- *
- * @package dl_accounting
- * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
- *
- */
-class Tx_DlAccounting_Domain_Model_Event extends Tx_Extbase_DomainObject_AbstractEntity {
 
+class Tx_DlAccounting_Domain_Model_Event extends AbstractEntity {
 }
-?>

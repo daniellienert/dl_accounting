@@ -1,39 +1,28 @@
 {namespace ptx=Tx_PtExtbase_ViewHelpers}
 
-<f:layout name="Default" />
-
-This template displays a EDIT form for the current domain object.
-
-If you modify this template, do not forget to change the overwrite settings
-in /Configuration/ExtensionBuilder/settings.yaml:
-  Resources:
-    Private:
-      Templates:
-        Edit.html: keep
-
-Otherwise your changes will be overwritten the next time you save the extension in the extension builder
-
+<f:layout name="Default"/>
 <f:section name="main">
+    <ptx:flashMessages renderMode="div" messageCssClasses="{0: 'alert alert-success', 1: 'alert alert-warning', 2: 'alert alert-error'}"/>
 
+    <f:form method="post" class="form-horizontal" action="update" name="billPosition" object="{billPosition}">
 
-<ptx:flashMessages renderMode="div" messageCssClasses="{0: 'alert alert-success', 1: 'alert alert-warning', 2: 'alert alert-error'}" />
+        <fieldset>
 
-<f:render partial="FormErrors" />
+            <legend>Eintrag bearbeiten</legend>
+            <br/>
 
-<f:form method="post" class="form-horizontal" action="update" name="billPosition" object="{billPosition}" >
+            <f:render partial="BillPosition/FormFields"
+                      arguments="{billPosition:billPosition, costTypes:costTypes, accountCodes:accountCodes,  billPositionObjectName:'newBillPosition'}"/>
 
-	<fieldset>
+            <div class="form-actions">
+                <f:form.submit class="btn btn-primary" value="{f:translate(key:'tx_dlaccounting.general.save')}"/>
+                <button class="btn">
+                    <f:link.action action="edit" controller="Bill" arguments="{bill:billPosition.bill}">
+                        <f:translate key="tx_dlaccounting.general.cancel"/>
+                    </f:link.action>
+                </button>
+            </div>
 
-		<legend>Eintrag bearbeiten</legend>
-		<br />
-
-		<f:render partial="BillPosition/FormFields" arguments="{billPosition:billPosition, costTypes:costTypes, accountCodes:accountCodes,  billPositionObjectName:'newBillPosition'}" />
-
-		<div class="form-actions">
-			<f:form.submit class="btn btn-primary" value="{f:translate(key:'tx_dlaccounting.general.save')}" />
-			<button class="btn"><f:link.action action="edit" controller="Bill" arguments="{bill:billPosition.bill}"><f:translate key="tx_dlaccounting.general.cancel" /></f:link.action></button>
-		</div>
-
-	</fieldset>
-</f:form>
+        </fieldset>
+    </f:form>
 </f:section>
